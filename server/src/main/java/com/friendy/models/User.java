@@ -34,27 +34,34 @@ public class User {
     private int id;
 
     @Column(name="FIRST_NAME", nullable = false)
+    @NotNull
     private String firstName;
 
     @Column(name="LAST_NAME", nullable = false)
+    @NotNull
     private String lastName;
     
     @Column(name="USER_NAME", nullable = false, unique = true)
+    @NotNull
     @Size(min = 4)
     private String userName;
 
     @Column(name="EMAIL", nullable = false, unique = true)
+    @NotNull
     @Email
     private String email;
 
     @Column(name="PASSWORD", nullable = false)
+    @NotNull
     @Size(min = 6)
     private String password;
 
     @Column(name="STATE", nullable = false)
+    @NotNull
     private String state;
 
     @Column(name="CITY", nullable = false)
+    @NotNull
     private String city;
 
 }
