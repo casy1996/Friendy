@@ -1,13 +1,15 @@
+// Acts as our Main.java, where the application is run from
 package com.friendy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FriendyAppApplication {
+public class FriendyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FriendyAppApplication.class, args);
+		//Run Springboot App
+		SpringApplication.run(FriendyApplication.class, args);
 	}
 
 }
