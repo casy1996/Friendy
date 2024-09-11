@@ -37,31 +37,82 @@ public class User {
     @NotNull
     private String firstName;
 
+    public String getFirstName(){
+        return firstName;
+    }
+    public void setName(String firstname){
+        this.firstName = firstname;
+    }
+
     @Column(name="LAST_NAME", nullable = false)
     @NotNull
     private String lastName;
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public void setLastName(String lastname){
+        this.lastName = lastname
+    }
     
     @Column(name="USER_NAME", nullable = false, unique = true)
     @NotNull
     @Size(min = 4)
     private String userName;
 
+    public String getUserName(){
+        return userName;
+    }
+
+    public void setUserName(String username){
+        this.userName = username;
+    }
+
     @Column(name="EMAIL", nullable = false, unique = true)
     @NotNull
     @Email
     private String email;
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
 
     @Column(name="PASSWORD", nullable = false)
     @NotNull
     @Size(min = 6)
     private String password;
 
+    protected void setPassword(String password){
+        this.password = password;
+    }
+
     @Column(name="STATE", nullable = false)
     @NotNull
     private String state;
 
+    public String getState(){
+        return state;
+    }
+
+    public void setState(){
+        this.state = state;
+    }
+
     @Column(name="CITY", nullable = false)
     @NotNull
     private String city;
+
+    public String getCity(){
+        return city;
+    }
+
+    public void setCity(){
+        this.city = city;
+    }
 
 }
