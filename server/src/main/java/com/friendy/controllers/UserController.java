@@ -1,8 +1,10 @@
 //Package UserController
 package com.friendy.controllers;
 
+//Import model
+import com.friendy.models.User;
 //Import my UserService
-import com.friendy.repositories.UserService;
+import com.friendy.services.UserService;
 
 //Import annotations for binding requests to controllrs and handler methods
 //Mainly RestController, RequestMapping, RequestParam and CRUD Mapping (Get/Put/Delete/Post)
@@ -37,7 +39,6 @@ public class UserController {
     //PathVariable used to grab id from the URL path we are accessing
     public Optional<User> findOneUser(@PathVariable Integer id){
         return userService.oneUser(id);
-    
     }
 
 }

@@ -19,6 +19,8 @@ package com.friendy.models;
 // import Jakarta.persistence.Table;
     //Import All
 import jakarta.persistence.*;
+// enables @NotNull/@Email/@Size constraints from jakarta.validation API dependency
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name="MEMBER")
@@ -53,7 +55,7 @@ public class User {
     }
 
     public void setLastName(String lastname){
-        this.lastName = lastname
+        this.lastName = lastname;
     }
     
     @Column(name="USER_NAME", nullable = false, unique = true)

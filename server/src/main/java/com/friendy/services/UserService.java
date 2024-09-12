@@ -7,7 +7,7 @@ import com.friendy.models.User;
 import com.friendy.repositories.UserRepository;
 //import .stereotype package to enable @Services annotation
 //@Service marks the class as a service layer component
-import com.springframework.stereotype.Services;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserService(final UserRepository userRepository) {
-        this.userRepository = user Repository;
+        this.userRepository = userRepository;
     }
 
     //Called on by getAllUsers() controller method
