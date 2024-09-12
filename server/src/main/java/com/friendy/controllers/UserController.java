@@ -32,11 +32,11 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-        //Optional prevents null exceptions by checking if a value (inner object) is present or absent.
-        //https://www.oracle.com/technical-resources/articles/java/java8-optional.html
-        //PathVariable used to grab id from the URL path we are accessing
-        public Optional<User> findOneUser(@PathVariable Integer id){
-            return userService.oneUser(id);
+    //Optional prevents null exceptions by checking if a value (inner object) is present or absent.
+    //https://www.oracle.com/technical-resources/articles/java/java8-optional.html
+    //PathVariable used to grab id from the URL path we are accessing
+    public Optional<User> findOneUser(@PathVariable Integer id){
+        return userService.oneUser(id);
     
     }
 
