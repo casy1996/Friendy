@@ -41,5 +41,10 @@ public class UserController {
         return userService.oneUser(id);
     }
 
+    //Create/POST a user
+    @PostMapping
+    public User create(@RequestBody User newUser){
+        return userService.createNew(newUser);
+    }
 }
 
