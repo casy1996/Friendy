@@ -10,6 +10,7 @@ import com.friendy.repositories.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 //Annotation means the class is a REST controller that handles HTTP requests and returns JSON to render on the frontend
 @RestController

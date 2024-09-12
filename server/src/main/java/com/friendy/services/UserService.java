@@ -10,6 +10,7 @@ import com.friendy.repositories.UserRepository;
 import com.springframework.stereotype.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -28,5 +29,5 @@ public class UserService {
     public Optional<User> oneUser(Integer id){
         return userRepository.findById(id);
     }
-    
+
 }
