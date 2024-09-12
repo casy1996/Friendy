@@ -25,4 +25,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public Optional<User> oneUser(Integer id){
+        return userRepository.findById(id);
+    }
+    
 }
