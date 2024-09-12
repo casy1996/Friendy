@@ -9,6 +9,8 @@ import com.friendy.repositories.UserService;
 //https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/package-summary.html
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //Annotation means the class is a REST controller that handles HTTP requests and returns JSON to render on the frontend
 @RestController
 //entry point for all requests
@@ -19,6 +21,15 @@ public class UserController {
     public UserController(final UserService userService){
         this.userService = userService;
     }
+
+    //Use GetMapping annotation to allow user to make an HTTP GET request at some path
+    @GetMapping("/users")
+    //method to GET all user entities
+    public List<User> getAllUsers(){
+        //tells service layer to run its method called 'allUsers'
+        return this.userService.allUsers();
+    }
+
 
 }
 
