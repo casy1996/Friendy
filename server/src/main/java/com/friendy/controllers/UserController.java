@@ -42,7 +42,7 @@ public class UserController {
     }
 
     //Create/POST a user
-    @PostMapping
+    @PostMapping("/create_friendy")
     public User create(@RequestBody User newUser){
         return userService.createNew(newUser);
     }

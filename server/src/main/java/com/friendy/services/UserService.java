@@ -30,7 +30,7 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public User createrNew(User newUser){
+    public User createNew(User newUser){
         //.save() detects if id is null or not to determine if this is a new or existing entity
         return userRepository.save(newUser);
     }
