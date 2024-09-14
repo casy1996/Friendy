@@ -48,6 +48,7 @@ public class UserController {
     }
 
     //Endpoint to authenticate a user
+    //Where the login page POSTs, to find user & check password match
     @PostMapping("/auth_friendy")
     public String authenticateUser(@RequestBody User user){
         return userService.authUser(user);
