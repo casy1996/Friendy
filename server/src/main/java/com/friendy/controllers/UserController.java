@@ -53,5 +53,14 @@ public class UserController {
     public String authenticateUser(@RequestBody User user){
         return userService.authUser(user);
     }
+
+    // //Update/PUT
+    // //Fetch entry from user table then .save() to update user
+    // @PutMapping("/users/{id}")
+    // //Path parameter for id to pull user id, and request body for changed field values
+    // public Optional<User> update(@PathVariable Integer id, @RequestBody User user){
+    //     return userService.findAndUpdate(user);
+    // }
+
 }
 

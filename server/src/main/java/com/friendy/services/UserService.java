@@ -63,4 +63,41 @@ public class UserService {
         //Error if no username found
         return "Username not found";
     }
+
+    // public Optional<User> findAndUpdate(Integer id, User user){
+    //     Optional<User> foundUser = userRepository.findById(id);
+
+    //     if (!foundUser.isPresent()){
+    //         System.out.println("Could not find user at id: " + id);
+    //         return Optional.empty();
+    //     }
+        
+    //     //.get() removes optional wrapper of the T element: <User> and opens access to getters and setters by returning the User object.
+    //     User updateUser = foundUser.get();
+    //     System.out.println("Editing: " + updateUser.getFirstName());
+
+    //     //check fields for null, only update non-null fields (edited fields)
+    //     if(user.getFirstName() != null){
+    //         updateUser.setFirstName(user.getFirstName());
+    //     }
+    //     if(user.getLastName() != null){
+    //         updateUser.setLastName(user.getLastName());
+    //     }
+    //     if(user.getUserName() != null){
+    //         updateUser.setUserName(user.getUserName());
+    //     }
+    //     if(user.getPassword() != null){
+    //         updateUser.setPassword(bcrypt.encode(user.getPassword()));
+    //     }
+    //     if(user.getEmail() != null){
+    //         updateUser.setEmail(user.getEmail());
+    //     }
+    //     if(user.getState() != null){
+    //         updateUser.setState(user.getState());
+    //     }
+    //     if(user.getCity() != null){
+    //         updateUser.setCity(user.getCity());
+    //     }
+    //     return userRepository.save(updateUser);
+    // }
 }

@@ -106,7 +106,7 @@ public class User {
         return state;
     }
 
-    public void setState(){
+    public void setState(String state){
         this.state = state;
     }
 
@@ -118,7 +118,7 @@ public class User {
         return city;
     }
 
-    public void setCity(){
+    public void setCity(String city){
         this.city = city;
     }
 
