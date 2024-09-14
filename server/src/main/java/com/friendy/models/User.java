@@ -42,7 +42,8 @@ public class User {
     public String getFirstName(){
         return firstName;
     }
-    public void setName(String firstname){
+
+    public void setFirstName(String firstname){
         this.firstName = firstname;
     }
 
@@ -88,6 +89,10 @@ public class User {
     @NotNull
     @Size(min = 6)
     private String password;
+
+    public void getPassword(String password){
+        return password;
+    }
 
     protected void setPassword(String password){
         this.password = password;

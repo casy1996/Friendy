@@ -31,6 +31,12 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- Spring Security -->
+		<!-- includes Bcyrpt to encode passwords and handle verification -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<!-- Jakarta Bean Validation -->
 		<!-- https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary -->
 		<!-- https://central.sonatype.com/artifact/jakarta.validation/jakarta.validation-api -->

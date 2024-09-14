@@ -32,6 +32,7 @@ public class UserService {
 
     public User createNew(User newUser){
         //.save() detects if id is null or not to determine if this is a new or existing entity
+        // allows .save() to be used for creating or updating
         return userRepository.save(newUser);
     }
 }
