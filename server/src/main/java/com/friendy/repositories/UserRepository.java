@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 //Import .stereotype package to enable use of @Repository annotation
 //@Repository marks the class as a data access layer
 import org.springframework.stereotype.Repository;
+//import optional for needed custom query
+import java.util.Optional;
 
 // Repo to handle interactions with our database in Postgres 
 // Data Access Object
@@ -17,4 +19,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Integer> {
     // Jpa chosen over CrudRepository because of the additional functionality - secure app longevity
     // Specific queries not provided by JpaRepository should be added here
+    Optional<User> findByUserName(String userName);
 }

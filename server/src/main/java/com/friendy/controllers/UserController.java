@@ -46,5 +46,11 @@ public class UserController {
     public User create(@RequestBody User newUser){
         return userService.createNew(newUser);
     }
+
+    //Endpoint to authenticate a user
+    @PostMapping("/auth_friendy")
+    public String authenticateUser(@RequestBody User user){
+        return userService.authUser(user);
+    }
 }
 

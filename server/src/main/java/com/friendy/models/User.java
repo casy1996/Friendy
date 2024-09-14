@@ -90,11 +90,11 @@ public class User {
     @Size(min = 6)
     private String password;
 
-    public void getPassword(String password){
+    public String getPassword(){
         return password;
     }
 
-    protected void setPassword(String password){
+    public void setPassword(String password){
         this.password = password;
     }
 
