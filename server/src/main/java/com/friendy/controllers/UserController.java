@@ -63,13 +63,26 @@ public class UserController {
 
     // //Update/PUT
     // //Fetch entry from user table then .save() to update user
-    // @PutMapping("/users/{id}")
-    // //Path parameter for id to pull user id, and request body for changed field values
-    // public Optional<User> update(@PathVariable Integer id, @RequestBody User user){
-    //     return userService.findAndUpdate(user);
-    // }
+    @PutMapping("/users/{id}")
+    //Path parameter for id to pull user id, and request body for changed field values
+    //Change to response entity and verify user is authenticated via session
+    public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody User user, HttpSession session){
+        //Restrict use of method unless a session is successfully created showing loggedIn status true
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")){
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+            //After checking session, check if session id equals the users id in the path (the user we are trying to update)
+            if (connectedUserId.equals(id)){
+                //if true, run service to update user credentials
+                return userService.findAndUpdate(id, user);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Not authorized to access this user.");
+            }
+        //If session verification failed    
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Log in to edit your profile.");
+        } 
+    }
 
-    // TESTING FILE TRACKING CHANGES 
 
 }
 
