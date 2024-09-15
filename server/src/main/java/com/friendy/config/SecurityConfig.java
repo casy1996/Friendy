@@ -25,7 +25,14 @@ public class SecurityConfig {
             // Secure other endpoints not defined in .requestMatchers()
             .anyRequest().authenticated()  
             .and()
+            // enable authentication 
             .httpBasic();
+            .and()
+            //enables spring security logout configuration
+            .logout()
+            //redirect after logout
+            .logoutSuccessUrl("/auth_friendy") 
+            .invalidateHttpSession(true); 
 
         return http.build();
     }
