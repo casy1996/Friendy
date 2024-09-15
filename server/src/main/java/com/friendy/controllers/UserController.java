@@ -10,6 +10,7 @@ import com.friendy.services.UserService;
 //Mainly RestController, RequestMapping, RequestParam and CRUD Mapping (Get/Put/Delete/Post)
 //https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/package-summary.html
 import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,8 +50,9 @@ public class UserController {
 
     //Endpoint to authenticate a user
     //Where the login page POSTs, to find user & check password match
+    //Update to pass session object (establish session in Service)
     @PostMapping("/auth_friendy")
-    public String authenticateUser(@RequestBody User user){
+    public String authenticateUser(@RequestBody User user, HttpSession session){
         return userService.authUser(user);
     }
 
