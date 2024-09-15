@@ -35,6 +35,11 @@ public class User {
     // long (primitive non-null extra-long integer)
     private int id;
 
+    //Getter for id - will be referrenced for user sessions and when model is joined with Events model
+    public int getId(){
+        return id;
+    }
+
     @Column(name="FIRST_NAME", nullable = false)
     @NotNull
     private String firstName;

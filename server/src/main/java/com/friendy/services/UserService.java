@@ -10,6 +10,8 @@ import com.friendy.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 //import from spring security dependency to enable BCrypt class
 import org.springframework.security.crypto.bcrypt.*;
+//import Spring Session, HttpSession
+import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +47,8 @@ public class UserService {
         return userRepository.save(newUser);
     }
 
-    public String authUser(User user){
+    //Update to accept session object
+    public String authUser(User user, HttpSession session){
         Optional<User> findUser = userRepository.findByUserName(user.getUserName());
 
         //If username exists: check if entered password matches
@@ -54,6 +57,10 @@ public class UserService {
             //encrypt users entered password and check if it matches stored db password
             if(bcrypt.matches(user.getPassword(), friendyMember.getPassword())){
                 //match = authetnicated
+                //On sucessful login, create session with user details
+                session.setAttribute("userId", friendyMember.getId());
+                session.setAttribute("userName", friendyMember.getUserName());
+                session.setAttribute("loggedIn", true);
                 return "Member Authenticated";
                 //else wrong password
             } else {
