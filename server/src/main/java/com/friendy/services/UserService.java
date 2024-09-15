@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.*;
 //import Spring Session, HttpSession
 import jakarta.servlet.http.HttpSession;
+//import to enable sending error and http status codes/messages
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +52,7 @@ public class UserService {
     }
 
     //Update to accept session object
-    public String authUser(User user, HttpSession session){
+    public ResponseEntity<String> authUser(User user, HttpSession session){
         Optional<User> findUser = userRepository.findByUserName(user.getUserName());
 
         //If username exists: check if entered password matches
@@ -61,14 +65,14 @@ public class UserService {
                 session.setAttribute("userId", friendyMember.getId());
                 session.setAttribute("userName", friendyMember.getUserName());
                 session.setAttribute("loggedIn", true);
-                return "Member Authenticated";
+                return ResponseEntity.ok("Member Authenticated");
                 //else wrong password
             } else {
-                return "Incorrect Password";
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Password");
             } 
         }
         //Error if no username found
-        return "Username not found";
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username not found");
     }
 
     // public Optional<User> findAndUpdate(Integer id, User user){

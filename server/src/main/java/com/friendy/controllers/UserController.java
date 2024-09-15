@@ -11,6 +11,10 @@ import com.friendy.services.UserService;
 //https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/package-summary.html
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
+//imports to enable sending error and http status codes/messages
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -52,8 +56,9 @@ public class UserController {
     //Where the login page POSTs, to find user & check password match
     //Update to pass session object (establish session in Service)
     @PostMapping("/auth_friendy")
-    public String authenticateUser(@RequestBody User user, HttpSession session){
-        return userService.authUser(user);
+    //return response entity over plain string object
+    public ResponseEntity<String> authenticateUser(@RequestBody User user, HttpSession session){
+        return userService.authUser(user, session);
     }
 
     // //Update/PUT
