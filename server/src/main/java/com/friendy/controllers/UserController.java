@@ -83,6 +83,12 @@ public class UserController {
         } 
     }
 
+    //Create a LOGOUT method that removes the user session
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session){
+        userService.logout(session);
+        return ResponseEntity.ok("Successful Logout");
+    }
 
 }
 

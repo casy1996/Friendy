@@ -113,4 +113,8 @@ public class UserService {
         userRepository.save(updateUser);
         return ResponseEntity.ok("Profile updated!");
     }
+
+    public void logout(HttpSession session){
+        session.invalidate();
+    }
 }
