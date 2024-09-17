@@ -3,7 +3,10 @@ package com.friendy.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.util.Date;
-import java.util.LocalDate;
+import java.util.Set;
+import java.util.HashSet;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name="EVENT")
@@ -25,7 +28,7 @@ public class Event {
     private String event;
 
     public String getEvent(){
-        return firstName;
+        return event;
     }
 
     public void setEvent(String event){
@@ -61,14 +64,14 @@ public class Event {
     //Date and time event was created on Friendy
     @Column(name="CREATE", nullable = false)
     @NotNull
-    @Temporal(@TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
     public Date getCreated(){
         return created;
     }
 
-    public void setCreated(String created){
+    public void setCreated(Date created){
         this.created = created;
     }
 
@@ -88,7 +91,7 @@ public class Event {
     //Event Start Time (separte from end time for drop down integration
     @Column(name="START_TIME", nullable = false)
     @NotNull
-    @temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIME)
     private Date startTime;
 
     public Date getStartTime(){
@@ -101,7 +104,7 @@ public class Event {
 
     @Column(name="END_TIME", nullable = false)
     @NotNull
-    @temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIME)
     private Date endTime;
 
     public Date getEndTime(){
@@ -123,6 +126,30 @@ public class Event {
 
     public void setCapacity(int capacity){
         this.capacity = capacity;
+    }
+
+    //ONE [USER] MANY [EVENTS]
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user; //Reference the user who created the event named user_id. acts as foreign key for this event model. (ex: John creates an event, event table will have a user_id which is a reference to John the user.
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user){
+        this.user = user; 
+    }
+
+    @ManyToMany(mappedBy = "events")
+    private Set<User> attendees = new HashSet<>();
+
+    public Set<User> getAttendees(){
+        return attendees;
+    }
+
+    public void setAttendees(Set<User> attendees){
+        this.attendees = attendees;
     }
 
 }

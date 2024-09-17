@@ -21,6 +21,8 @@ package com.friendy.models;
 import jakarta.persistence.*;
 // enables @NotNull/@Email/@Size constraints from jakarta.validation API dependency
 import jakarta.validation.constraints.*;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name="MEMBER")
@@ -125,6 +127,25 @@ public class User {
 
     public void setCity(String city){
         this.city = city;
+    }
+
+    //Create a joined table showing all events that an individual user has joined AND every user in a specific event.
+    //user_id is the foreign key in EVENTS, that references a specific user
+    //event_id references the primary key of an event. 
+    @ManyToMany
+    @JoinTable(
+        name = "ATTENDEES", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private Set<Event> events = new HashSet<>();
+
+    public Set<Event> getEvents(){
+        return events;
+    }
+
+    public void setEvents(Set<Event> events){
+        this.events = events;
     }
 
 }
