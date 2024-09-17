@@ -5,6 +5,9 @@ target/
 !**/src/test/**/target/
 server/src/main/resources/application.properties
 
+### REDIS DB ###
+dump.rdb
+
 ### STS ###
 .apt_generated
 .classpath

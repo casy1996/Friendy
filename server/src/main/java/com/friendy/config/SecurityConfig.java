@@ -26,7 +26,7 @@ public class SecurityConfig {
             .anyRequest().authenticated()  
             .and()
             // enable authentication 
-            .httpBasic();
+            .httpBasic()
             .and()
             //enables spring security logout configuration
             .logout()
