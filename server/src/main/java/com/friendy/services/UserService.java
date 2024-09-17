@@ -75,6 +75,7 @@ public class UserService {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username not found");
     }
 
+    //Update Profile
     public ResponseEntity<String> findAndUpdate(Integer id, User user){
         Optional<User> foundUser = userRepository.findById(id);
 
@@ -94,10 +95,10 @@ public class UserService {
         if(user.getLastName() != null){
             updateUser.setLastName(user.getLastName());
         }
-        //disable editing of username
-        // if(user.getUserName() != null){
-        //     updateUser.setUserName(user.getUserName());
-        // }
+        //Re-enable change username
+        if(user.getUserName() != null){
+            updateUser.setUserName(user.getUserName());
+        }
         if(user.getPassword() != null){
             updateUser.setPassword(bcrypt.encode(user.getPassword()));
         }
@@ -114,7 +115,23 @@ public class UserService {
         return ResponseEntity.ok("Profile updated!");
     }
 
+    //Logout
     public void logout(HttpSession session){
         session.invalidate();
     }
+
+    //Delete Account
+    public ResponseEntity<String> deleteMe(Integer id, HttpSession session){
+        Optional<User> foundUser = userRepository.findById(id);
+
+        if (foundUser.isPresent()){
+            userRepository.deleteById(id);
+            session.invalidate();
+            return ResponseEntity.ok("Account Deleted");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to find user");
+        }
+    }
+
+// End of User Service Class
 }

@@ -90,5 +90,24 @@ public class UserController {
         return ResponseEntity.ok("Successful Logout");
     }
 
+    //Delete User (Delete my account)
+    @DeleteMapping("/users/{id}/delete")
+    public ResponseEntity<String> deleteAccount(@PathVariable Integer id, HttpSession session){
+        // check logged in , if conditional - same as update
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")){
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+
+            if (connectedUserId.equals(id)){
+                userService.deleteMe(id, session);
+                return ResponseEntity.ok("Account Deleted");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error deleted account");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Log in to delete account");
+        }
+    }
+
+//End of User Controller Class
 }
 
