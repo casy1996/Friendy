@@ -21,7 +21,8 @@ public class SecurityConfig {
             .csrf().disable()
             .authorizeHttpRequests()
             // Allow access to the following paths without authentication
-            .requestMatchers("/users", "/users/**", "/create_friendy", "/auth_friendy", "/logout").permitAll()  
+            .requestMatchers("/users", "/users/**", "/create_friendy", "/auth_friendy", "/logout",
+             "/events","/events/**","/create_event").permitAll()  
             // Secure other endpoints not defined in .requestMatchers()
             .anyRequest().authenticated()  
             .and()

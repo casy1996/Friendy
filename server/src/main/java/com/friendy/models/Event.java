@@ -1,4 +1,3 @@
-//stage file structure to git
 package com.friendy.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -6,6 +5,10 @@ import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+//auto-generate timestamp when events are created
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -15,7 +18,6 @@ public class Event {
     //Database Id of Event
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int id;
 
     public int getId(){
@@ -62,17 +64,16 @@ public class Event {
     }
 
     //Date and time event was created on Friendy
-    @Column(name="CREATE", nullable = false)
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @Column(name="MADE", nullable = false)
+    @CreationTimestamp
+    private LocalDateTime made;
 
-    public Date getCreated(){
-        return created;
+    public LocalDateTime getMade(){
+        return made;
     }
 
-    public void setCreated(Date created){
-        this.created = created;
+    public void setMade(LocalDateTime made){
+        this.made = made;
     }
 
     //Date of Event
@@ -91,27 +92,25 @@ public class Event {
     //Event Start Time (separte from end time for drop down integration
     @Column(name="START_TIME", nullable = false)
     @NotNull
-    @Temporal(TemporalType.TIME)
-    private Date startTime;
+    private LocalTime startTime;
 
-    public Date getStartTime(){
+    public LocalTime getStartTime(){
         return startTime;
     }
 
-    public void setStartTime(Date time){
+    public void setStartTime(LocalTime startTime){
         this.startTime = startTime;
     }
 
     @Column(name="END_TIME", nullable = false)
     @NotNull
-    @Temporal(TemporalType.TIME)
-    private Date endTime;
+    private LocalTime endTime;
 
-    public Date getEndTime(){
+    public LocalTime getEndTime(){
         return endTime;
     }
 
-    public void setEndTime(Date time){
+    public void setEndTime(LocalTime endTime){
         this.endTime = endTime;
     }
 
