@@ -73,7 +73,15 @@ public class EventController {
     // @PutMapping("/events/{id}")
 
     //Delete Event (If User was the one to create it)
-    // @DeleteMapping("/events/{id}/delete")
+    @DeleteMapping("/events/{eventId}")
+    public ResponseEntity<String> deleteEvent(@PathVariable Integer eventId, HttpSession session){
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")){
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+            return eventService.deleteEvent(eventId, connectedUserId);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Log in to delete event");
+        }
+    }
 
     //Get all events that a User has joined/created
     // @GetMapping("/my_events")
