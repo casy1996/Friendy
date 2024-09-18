@@ -37,6 +37,30 @@ public class Event {
         this.event = event;
     }
 
+    @Column(name="EVENT_STATE", nullable = false)
+    @NotNull
+    private String eventState;
+
+    public String getEventState(){
+        return eventState;
+    }
+
+    public void setState(String eventState){
+        this.eventState = eventState;
+    }
+
+    @Column(name="EVENT_CITY", nullable = false)
+    @NotNull
+    private String eventCity;
+
+    public String getEventCity(){
+        return eventCity;
+    }
+
+    public void setCity(String eventCity){
+        this.eventCity = eventCity;
+    }
+
     //Address where event will be held
     @Column(name="ADDRESS", nullable = false)
     @NotNull
