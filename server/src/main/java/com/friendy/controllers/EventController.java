@@ -35,9 +35,9 @@ public class EventController {
     }
 
     //Show one specific event
-    @GetMapping("/events/{id}")
-    public Optional<Event> findOneEvent(@PathVariable Integer id){
-        return eventService.oneEvent(id);
+    @GetMapping("/events/{eventId}")
+    public Optional<Event> findOneEvent(@PathVariable Integer eventId){
+        return eventService.oneEvent(eventId);
     }
 
     //Create/POST a event (only account holders)
@@ -89,6 +89,17 @@ public class EventController {
             return eventService.deleteEvent(eventId, connectedUserId);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Log in to delete event");
+        }
+    }
+
+    //Add a user to an event
+    @PostMapping("/events/{eventId}/join")
+    public ResponseEntity<String> rsvp(@PathVariable Integer eventId, HttpSession session){
+        if (session.getAttribute("loggedIn") != null & (Boolean) session.getAttribute("loggedIn")){
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+            return eventService.joinEvent(eventId, connectedUserId);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Log in to join the event");
         }
     }
 

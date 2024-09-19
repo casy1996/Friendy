@@ -23,8 +23,8 @@ public class EventService {
         return eventRepository.findAll();
     }
 
-    public Optional<Event> oneEvent(Integer id){
-        return eventRepository.findById(id);
+    public Optional<Event> oneEvent(Integer eventId){
+        return eventRepository.findById(eventId);
     }
 
     public Event hostNew(Event newEvent){
@@ -97,6 +97,11 @@ public class EventService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to find event");
         }
+    }
+
+    //Join the event
+    public ResponseEntity<String> joinEvent(Integer eventId, Integer connectedUserId){
+        
     }
 
     //Get all events User has joined/created
