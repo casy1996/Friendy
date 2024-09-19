@@ -70,7 +70,16 @@ public class EventController {
     
     }
     // Update event (If User was the one to create it)
-    // @PutMapping("/events/{id}")
+    @PutMapping("/events/{eventId}")
+    public ResponseEntity<String> updateEvent(@PathVariable Integer eventId, @RequestBody Event event, HttpSession session){
+        //verify user is logged in
+        if (session.getAttribute("loggedIn") != null & (Boolean) session.getAttribute("loggedIn")){
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+            return eventService.modifyEvent(eventId, event, connectedUserId);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Log in to update your event");
+        }
+    }
 
     //Delete Event (If User was the one to create it)
     @DeleteMapping("/events/{eventId}")

@@ -45,7 +45,7 @@ public class Event {
         return eventState;
     }
 
-    public void setState(String eventState){
+    public void setEventState(String eventState){
         this.eventState = eventState;
     }
 
@@ -57,7 +57,7 @@ public class Event {
         return eventCity;
     }
 
-    public void setCity(String eventCity){
+    public void setEventCity(String eventCity){
         this.eventCity = eventCity;
     }
 
@@ -141,13 +141,13 @@ public class Event {
     //Capacity of Attendees
     @Column(name="CAPACITY", nullable = false)
     @NotNull
-    private int capacity;
+    private Integer capacity;
 
-    public int getCapacity(){
+    public Integer getCapacity(){
         return capacity;
     }
 
-    public void setCapacity(int capacity){
+    public void setCapacity(Integer capacity){
         this.capacity = capacity;
     }
 
