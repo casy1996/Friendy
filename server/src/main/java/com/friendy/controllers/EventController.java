@@ -58,6 +58,8 @@ public class EventController {
                 User user = userForEvent.get();
                 //Set the found user to this event (setUser setter in event model for Many-To-One)
                 newEvent.setUser(user);
+                //Update method so that after we set the logged in user as the events creator, they are added as to the attending user list
+                newEvent.getAttendees().add(user);
                 //Tell event service layer to save the event in the database
                 eventService.hostNew(newEvent);
                 return ResponseEntity.status(HttpStatus.CREATED).body(newEvent);
@@ -96,6 +98,7 @@ public class EventController {
     @PostMapping("/events/{eventId}/join")
     public ResponseEntity<String> rsvp(@PathVariable Integer eventId, HttpSession session){
         if (session.getAttribute("loggedIn") != null & (Boolean) session.getAttribute("loggedIn")){
+            //if loggedIn status, pull the sessions id "connectedUserId"
             Integer connectedUserId = (Integer) session.getAttribute("userId");
             return eventService.joinEvent(eventId, connectedUserId);
         } else {

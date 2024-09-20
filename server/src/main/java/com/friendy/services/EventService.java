@@ -2,8 +2,13 @@
 package com.friendy.services;
 //import Event Model
 import com.friendy.models.Event;
+//user model import required for Joining event
+import com.friendy.models.User;
 //import Event Repository
 import com.friendy.repositories.EventRepository;
+//user repository required for joining event
+import com.friendy.repositories.UserRepository;
+
 import org.springframework.stereotype.Service;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +19,11 @@ import java.util.Optional;
 @Service
 public class EventService {
     private final EventRepository eventRepository;
+    private final UserRepository userRepository;
 
-    public EventService(final EventRepository eventRepository) {
+    public EventService(final EventRepository eventRepository, final UserRepository userRepository) {
         this.eventRepository = eventRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Event> allEvents(){
@@ -101,7 +108,30 @@ public class EventService {
 
     //Join the event
     public ResponseEntity<String> joinEvent(Integer eventId, Integer connectedUserId){
+        //find event
+        Optional<Event> foundEvent = eventRepository.findById(eventId);
+        //find User from user DB matches the user at the current session id
+        Optional<User> findUser = userRepository.findById(connectedUserId);
+
+        //upwrap both options
+        if (foundEvent.isPresent() && findUser.isPresent()){
+            Event thisEvent = foundEvent.get();
+            User joiningUser = findUser.get();
         
+        //make sure the current user is not already part of the attendees list
+            if (thisEvent.getAttendees().contains(joiningUser)){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Already joined this event");
+            }
+            //add user to attendees (many-to-many getter "getAttendees()") then save
+            thisEvent.getAttendees().add(joiningUser); 
+            eventRepository.save(thisEvent);
+            //add event to users events (events many-to-many getter "getEvents()")
+            joiningUser.getEvents().add(thisEvent);
+            userRepository.save(joiningUser);
+            return ResponseEntity.ok("Successfully joined the event");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error finding event/user");
+        }
     }
 
     //Get all events User has joined/created
