@@ -31,6 +31,11 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- Jackson (JSON processing library) -->
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+		</dependency>
 		<!-- Spring Security -->
 		<!-- includes Bcyrpt to encode passwords and handle verification -->
 		<dependency>

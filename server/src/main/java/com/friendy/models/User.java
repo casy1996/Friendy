@@ -23,6 +23,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.util.Set;
 import java.util.HashSet;
+//prevent endless nested loop of event/user 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="MEMBER")
@@ -138,6 +140,7 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "event_id")
     )
+    @JsonIgnore
     private Set<Event> events = new HashSet<>();
 
     public Set<Event> getEvents(){

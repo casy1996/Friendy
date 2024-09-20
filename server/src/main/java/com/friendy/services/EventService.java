@@ -95,6 +95,13 @@ public class EventService {
             //check if event to be deleted was made by the account logged in
             //access Event model getters - getUser is the FK related to a user in the user model. getId to get the id from user model. check if it equals session id.
             if (deletingEvent.getUser().getId() == connectedUserId){
+                //Update to delete
+                //Remove this event from all attendees who joined
+                for (User attendee : deletingEvent.getAttendees()) {
+                attendee.getEvents().remove(deletingEvent);
+                }
+                //clear the attendees Set<> for this event
+                deletingEvent.getAttendees().clear();
                 //run delete via repository
                 eventRepository.deleteById(eventId);
                 return ResponseEntity.ok("Event Deleted");
