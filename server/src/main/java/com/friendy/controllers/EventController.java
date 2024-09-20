@@ -60,6 +60,8 @@ public class EventController {
                 newEvent.setUser(user);
                 //Update method so that after we set the logged in user as the events creator, they are added as to the attending user list
                 newEvent.getAttendees().add(user);
+                //Add this event to the users list of events (attendees)
+                user.getEvents().add(newEvent);
                 //Tell event service layer to save the event in the database
                 eventService.hostNew(newEvent);
                 return ResponseEntity.status(HttpStatus.CREATED).body(newEvent);
@@ -69,8 +71,8 @@ public class EventController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Must be logged in to create an event.");
         }
-    
     }
+
     // Update event (If User was the one to create it)
     @PutMapping("/events/{eventId}")
     public ResponseEntity<String> updateEvent(@PathVariable Integer eventId, @RequestBody Event event, HttpSession session){
@@ -106,7 +108,24 @@ public class EventController {
         }
     }
 
-    //Get all events that a User has joined/created
-    // @GetMapping("/my_events")
+    //Get all events that a User has joined/created by checking attendees list
+    @GetMapping("/my_events")
+        public ResponseEntity<?> myEvents(HttpSession session) {
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
+            //if loggedIn status, pull the sessions id "connectedUserId"
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+            //myEvents, data type List of <Event>s where 
+            List<Event> myEvents = eventService.userEvents(connectedUserId);
+            //return all events if its not empty
+            if (!myEvents.isEmpty()) {
+                return ResponseEntity.ok(myEvents);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No events found for the user.");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Must be logged in to view events.");
+        }
+    }
+
 
 }

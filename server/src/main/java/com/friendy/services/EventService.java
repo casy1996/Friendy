@@ -15,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 @Service
 public class EventService {
@@ -142,7 +145,17 @@ public class EventService {
     }
 
     //Get all events User has joined/created
-    //code here
-
+    public List<Event> userEvents(Integer connectedUserId) {
+        //find the user
+        Optional<User> findUser = userRepository.findById(connectedUserId);
+        //check if user was found, isPresent = true
+        if (findUser.isPresent()) {
+            // unpack optional wrapper with .get() then call getter for events
+            // return an array, transforming the Set<Events> from model
+            return new ArrayList<>(findUser.get().getEvents());
+        } else {
+            return Collections.emptyList();
+        }
+    }
 
 }
