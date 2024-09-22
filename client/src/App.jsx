@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Landing from './components/LandingPage';
-import CreateAccount from './components/Create_Account';
-import Login from './components/Login';
-import Main from './components/Friendy_Main';
+import Landing from './pages/LandingPage';
+import CreateAccount from './pages/CreateAccount';
+import Login from './pages/Login';
+import Main from './pages/FriendyMain';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/login" element={<Login />} />
         <Route path="/friendy-home" element={<Main />} />
+        <Route path="/my-profile" element={<Profile />} />
       </Routes>
     </Router>
   );
