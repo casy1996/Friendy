@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import LoginForm from "../components/LoginForm";
-import NavbarViewer from '../components/NavbarViewer';
+import NavbarViewer from "../components/NavbarViewer";
 
 const Login = () => {
     return (

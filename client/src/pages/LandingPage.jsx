@@ -25,7 +25,7 @@ const LandingPage = () => {
                 <Link to="/login"><button>Sign In</button></Link>
             </div>
             <div>
-                <Link to="/friendy-home">Continue without account</Link>
+                <Link to="/friendy-guest">Continue without account</Link>
             </div>
         </div>
     );

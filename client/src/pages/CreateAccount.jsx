@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import AccountForm from "../components/AccountForm";
-import NavbarViewer from '../components/NavbarViewer';
+import NavbarViewer from "../components/NavbarViewer";
 
 const CreateAccount = () => {
     return (
