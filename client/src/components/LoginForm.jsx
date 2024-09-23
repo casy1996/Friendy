@@ -16,13 +16,19 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
-            await fetch("http://localhost:5500/auth_friendy", {
+            const response = await fetch("http://localhost:5500/auth_friendy", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(formData)
             });
-            navigate("/friendy-home");
-            console.log(formData);
+            
+            if (response.ok){
+                localStorage.setItem("authenticated", true);
+                navigate("/friendy-home");
+                console.log(formData);
+            } else {
+                console.error("Failed to login");
+            }
         } catch (error) {
             console.error("Failed to login.", error);
         };
