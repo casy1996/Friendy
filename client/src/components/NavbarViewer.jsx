@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavbarViewer = () => {
   return (
     <nav>
-      <Link to="/events-home">
+      <Link to="/friendy-home">
         <h1>Friendy</h1>
       </Link>
       <Link to="/about-us">About Us</Link>

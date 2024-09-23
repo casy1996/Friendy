@@ -6,7 +6,7 @@ const AccountForm = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
-        username: '',
+        userName: '',
         firstName: '',
         lastName: '',
         state: '',
@@ -30,7 +30,7 @@ const AccountForm = () => {
             navigate("/login");
             console.log(formData);
         } catch (error) {
-            console.error("Failed to submit form.", error);
+            console.error("Error in account creation - please try again.", error);
         };
     };
 
@@ -46,15 +46,15 @@ const AccountForm = () => {
             </div>
             <div>
                 <label>Username</label>
-                <input type="text" name="userName" value="{formData.username}" onChange={handleChange} required/>
+                <input type="text" name="userName" value="{formData.userName}" onChange={handleChange} required/>
             </div>
             <div>
                 <label>First Name</label>
-                <input type="text" name="firstName" value="{formData.firstname}" onChange={handleChange} required/>
+                <input type="text" name="firstName" value="{formData.firstName}" onChange={handleChange} required/>
             </div>
             <div>
                 <label>Last Name</label>
-                <input type="text" name="lastName" value="{formData.lastname}" onChange={handleChange} required/>
+                <input type="text" name="lastName" value="{formData.lastName}" onChange={handleChange} required/>
             </div>
             <div>
                 <label>State</label>

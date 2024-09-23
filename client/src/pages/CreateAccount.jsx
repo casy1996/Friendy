@@ -1,12 +1,15 @@
-//stage file structure
 import React from 'react';
 import AccountForm from "../components/AccountForm";
+import NavbarViewer from '../components/NavbarViewer';
 
 const CreateAccount = () => {
     return (
         <div>
-            <h1>Create a Friendy Account</h1>
+            <NavbarViewer/>
+            <div>
+            <h1>Sign up to Friendy</h1>
             <AccountForm/>
+            </div>
         </div>
     );
 };
