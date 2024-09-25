@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 const NavbarViewer = () => {
   return (
     <nav>
-      <Link to="/friendy-home">
+      <Link to="/friendy-guest">
         <h1>Friendy</h1>
       </Link>
       <Link to="/about-us">About Us</Link>
+      <Link to="/create-account">Sign Up</Link>
     </nav>
   );
 };

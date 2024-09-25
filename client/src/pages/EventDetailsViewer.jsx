@@ -29,7 +29,7 @@ const EventDetailViewer = () => {
 
     if (!event.event) {
         return <div>Loading...</div>
-    }
+    };
 
     return (
         <div>
