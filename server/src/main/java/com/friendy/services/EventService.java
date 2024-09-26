@@ -33,8 +33,8 @@ public class EventService {
         return eventRepository.findAll();
     }
 
-    public Optional<Event> oneEvent(Integer eventId){
-        return eventRepository.findById(eventId);
+    public Event oneEvent(Integer eventId){
+        return eventRepository.findById(eventId).orElse(null);
     }
 
     public Event hostNew(Event newEvent){

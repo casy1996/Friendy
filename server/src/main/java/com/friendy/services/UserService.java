@@ -65,6 +65,7 @@ public class UserService {
                 session.setAttribute("userId", friendyMember.getId());
                 session.setAttribute("userName", friendyMember.getUserName());
                 session.setAttribute("loggedIn", true);
+                // System.out.println("User authenticated: " + friendyMember.getUserName());                return ResponseEntity.ok("Member Authenticated");
                 return ResponseEntity.ok("Member Authenticated");
                 //else wrong password
             } else {

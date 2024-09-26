@@ -9,7 +9,6 @@ const NavbarViewer = () => {
       </Link>
       <Link to="/about-us">About Us</Link>
       <Link to="/friendy-guest">Events</Link>
-      <Link to="/create-account">Create Account</Link>
     </nav>
   );
 };

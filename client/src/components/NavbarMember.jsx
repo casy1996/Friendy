@@ -5,7 +5,7 @@ const NavbarMember = () => {
   return (
     <nav>
         <div>
-        <Link to="/events">
+        <Link to="/friendy-home">
             <h1>Friendy</h1>
         </Link>
         </div>
@@ -16,7 +16,9 @@ const NavbarMember = () => {
         <Link to="/user_profile">
             <h1>profile</h1>
         </Link>
-        <Link to="/about-us">About Us</Link>
+        <Link to="/friendy">
+            <h1>logout</h1>
+        </Link>
         </div>
     </nav>
   );

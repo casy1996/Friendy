@@ -28,7 +28,7 @@ const Viewer = () => {
                 {events.length === 0 ? ( <p> No events at this moment</p> ) : (
                     events.map(event => (
                         <div key={event.id} className="event-card">
-                            <Link to={`/member/events/${event.id}`}>
+                            <Link to={`/viewer/events/${event.id}`}>
                             <h2>{event.event}</h2>
                             <h4>{event.eventCity},{event.eventState}</h4>
                             <h4>hosted by {event.userName}</h4>

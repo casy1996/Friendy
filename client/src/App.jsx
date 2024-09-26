@@ -20,8 +20,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/friendy-guest" element={<Viewer />} />
         <Route path="/friendy-home" element={<Member />} />
-        <Route path="/viewer/events/:eventId" element={<EventViewer/>} />
-        <Route path="/member/events/:eventId" element={<EventMember/>} />
+        <Route path="/viewer/events/:id" element={<EventViewer/>} />
+        <Route path="/member/events/:id" element={<EventMember/>} />
         {/* <Route path="/events/:eventId/edit" element={<EditEvent/>} /> */}
         <Route path="/about-us" element={<About/>} />
         {/* <Route path="/my-profile" element={<Profile />} /> */}

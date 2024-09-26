@@ -24,8 +24,8 @@ const LoginForm = () => {
             
             if (response.ok){
                 localStorage.setItem("authenticated", true);
-                navigate("/friendy-home");
                 console.log(formData);
+                navigate("/friendy-home");
             } else {
                 console.error("Failed to login");
             }
@@ -47,9 +47,9 @@ const LoginForm = () => {
                 <br></br>
                 <input type="text" name="password" onChange={handleChange} required/>
             </div>
-        </form>
         <br></br>
         <button type="submit">Continue</button>
+        </form>
         </div>
     );
 };

@@ -58,7 +58,12 @@ public class UserController {
     @PostMapping("/auth_friendy")
     //return response entity over plain string object
     public ResponseEntity<String> authenticateUser(@RequestBody User user, HttpSession session){
-        return userService.authUser(user, session);
+        ResponseEntity<String> response = userService.authUser(user, session);
+        System.out.println("Session ID: " + session.getId());
+        System.out.println("LoggedIn Status: " + session.getAttribute("loggedIn"));
+        System.out.println("UserId: " + session.getAttribute("userId"));
+        return response;
+        // return userService.authUser(user, session);
     }
 
     // //Update/PUT

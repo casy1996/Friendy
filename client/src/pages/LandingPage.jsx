@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavbarViewer from "../components/NavbarViewer";
+import NavbarLanding from "../components/NavbarLanding";
 
 //Friendy Landing Page
 //Carousel Image Background
@@ -13,7 +13,7 @@ const LandingPage = () => {
     return (
         <div>
             <div>
-            <NavbarViewer/>
+            <NavbarLanding/>
             </div>
             <div>
             <h1>Join local events, make life long friends</h1>

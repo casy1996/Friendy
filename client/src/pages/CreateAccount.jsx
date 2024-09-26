@@ -1,11 +1,11 @@
 import React from "react";
 import AccountForm from "../components/AccountForm";
-import NavbarViewer from "../components/NavbarViewer";
+import NavbarLanding from "../components/NavbarLanding";
 
 const CreateAccount = () => {
     return (
         <div>
-            <NavbarViewer/>
+            <NavbarLanding/>
             <div>
             <h1>Sign up to Friendy</h1>
             <AccountForm/>

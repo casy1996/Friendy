@@ -36,8 +36,13 @@ public class EventController {
 
     //Show one specific event
     @GetMapping("/events/{eventId}")
-    public Optional<Event> findOneEvent(@PathVariable Integer eventId){
-        return eventService.oneEvent(eventId);
+    public ResponseEntity<Event> findOneEvent(@PathVariable Integer eventId){
+        Event event = eventService.oneEvent(eventId);
+        if (event != null) {
+            return ResponseEntity.ok(event);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     //Create/POST a event (only account holders)
@@ -99,7 +104,13 @@ public class EventController {
     //Add a user to an event
     @PostMapping("/events/{eventId}/join")
     public ResponseEntity<String> rsvp(@PathVariable Integer eventId, HttpSession session){
-        if (session.getAttribute("loggedIn") != null & (Boolean) session.getAttribute("loggedIn")){
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        Integer userId = (Integer) session.getAttribute("userId");
+
+        System.out.println("Logged In: " + loggedIn);
+        System.out.println("User ID: " + userId);
+        if (loggedIn != null && loggedIn){
+        // if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")){
             //if loggedIn status, pull the sessions id "connectedUserId"
             Integer connectedUserId = (Integer) session.getAttribute("userId");
             return eventService.joinEvent(eventId, connectedUserId);

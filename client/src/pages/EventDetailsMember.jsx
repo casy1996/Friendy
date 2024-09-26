@@ -11,7 +11,11 @@ const EventDetailMember = () => {
 
     const oneEvent = async () => {
         try {
-            const response = await fetch(`http://localhost:5500/events/${id}`);
+            const response = await fetch(`http://localhost:5500/events/${id}`, {
+                method: "GET",
+                headers: {"Content-Type": "application/json",},
+            credentials: "include"
+            });
             const data = await response.json();
             console.log(data);
             setEvent(data);
@@ -29,14 +33,17 @@ const EventDetailMember = () => {
             console.error("Failed to join event, event at capacity");
         } else {
             try {
-                await fetch(`http://localhost:5500/events/${id}/join`, {
+                const response = await fetch(`http://localhost:5500/events/${id}/join`, {
                     method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"},
                     credentials: "include"
                 });
                 if (response.ok){
                     oneEvent();
                 } else {
-                    console.error("Error joining event");
+                    const errorMsg = await response.text();
+                    console.error("Error joining event", errorMsg);
                 }
             } catch (error) {
                 console.error("Error joining event", error);
