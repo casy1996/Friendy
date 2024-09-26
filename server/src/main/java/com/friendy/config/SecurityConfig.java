@@ -34,6 +34,7 @@ public class SecurityConfig{
             )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/events").permitAll()
+                .requestMatchers("/events/**").permitAll()
                 .requestMatchers("/auth_friendy").permitAll()
                 .anyRequest().authenticated()
             )

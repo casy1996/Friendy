@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import NavbarMember from "../components/NavbarMember";
+import { getCsrfToken } from "../utils/csrfUtil";
 
 const EventDetailMember = () => {
     const params = useParams();
@@ -11,13 +12,22 @@ const EventDetailMember = () => {
 
     const oneEvent = async () => {
         try {
+            const csrfToken = getCsrfToken();
             const response = await fetch(`http://localhost:5500/events/${id}`, {
                 method: "GET",
-                headers: {"Content-Type": "application/json",},
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken
+                },
             credentials: "include"
             });
+
+            if (!response.ok){
+                const errorMsg = await response.text();
+                console.error("Failed to fetch single event", response.status, errorMsg);
+                return;
+            }
             const data = await response.json();
-            console.log(data);
             setEvent(data);
         } catch (error) {
             console.error(`Failed to open entry`, error);
@@ -29,25 +39,29 @@ const EventDetailMember = () => {
     }, [id]);
 
     const handleJoin = async () => {
-        if (event.attendees.length >= event.capacity) {
-            console.error("Failed to join event, event at capacity");
-        } else {
-            try {
+        try {
+            const csrfToken = getCsrfToken();
+            if (event.attendees.length >= event.capacity){
+                console.error("Failed to join event, event at capacity");
+            } else {
                 const response = await fetch(`http://localhost:5500/events/${id}/join`, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"},
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken,
+                    },
                     credentials: "include"
                 });
+
                 if (response.ok){
                     oneEvent();
                 } else {
                     const errorMsg = await response.text();
                     console.error("Error joining event", errorMsg);
                 }
-            } catch (error) {
-                console.error("Error joining event", error);
             }
+        } catch (error) {
+            console.error("Error joining event", error);
         }
     };
 
