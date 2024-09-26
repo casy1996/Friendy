@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavbarMember from "../components/NavbarMember";
+import { getCsrfToken } from "../utils/csrfUtil";
 
 const Member = () => {
     const [events, setEvents] = useState([]);
@@ -10,7 +11,20 @@ const Member = () => {
 
     const allEvents = async () => {
         try{
-            const response = await fetch("http://localhost:5500/events", {credentials: "include"});
+            const csrfToken = getCsrfToken();
+            const response = await fetch("http://localhost:5500/events", {
+                method: "GET",
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken,
+                },
+                credentials: "include"
+            });
+            
+            if (!response.ok) {
+                const errorMsg = await response.text();
+                console.error("Failed to fetch events", response.status, errorMsg);
+                return;
+            }
             const data = await response.json();
             setEvents(data);
         } catch (error) {
@@ -29,7 +43,6 @@ const Member = () => {
     return (
         <div>
             <NavbarMember/>
-            {/* add search bar to find new array of events */}
             <div>
                 {events.length === 0 ? ( <p> No events at this moment</p> ) : (
                     events.map(event => (

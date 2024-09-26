@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getCsrfToken } from '../utils/csrfUtil';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -16,15 +17,20 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
+            const csrfToken = getCsrfToken();
             const response = await fetch("http://localhost:5500/auth_friendy", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken,
+                },
+                credentials: "include",
                 body: JSON.stringify(formData)
             });
             
             if (response.ok){
                 localStorage.setItem("authenticated", true);
-                console.log(formData);
+                // console.log(formData);
                 navigate("/friendy-home");
             } else {
                 console.error("Failed to login");
@@ -45,7 +51,7 @@ const LoginForm = () => {
             <div>
                 <label>Password</label>
                 <br></br>
-                <input type="text" name="password" onChange={handleChange} required/>
+                <input type="password" name="password" onChange={handleChange} required/>
             </div>
         <br></br>
         <button type="submit">Continue</button>

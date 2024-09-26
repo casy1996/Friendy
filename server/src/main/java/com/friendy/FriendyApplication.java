@@ -6,13 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //Enable Redis Session
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
-@SpringBootApplication
 //Add Redis Session Annotation
 @EnableRedisHttpSession
+@SpringBootApplication
 public class FriendyApplication {
 
 	public static void main(String[] args) {
-		//Run Springboot App
 		SpringApplication.run(FriendyApplication.class, args);
 	}
 

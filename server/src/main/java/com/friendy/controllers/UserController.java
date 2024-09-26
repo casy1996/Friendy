@@ -11,6 +11,7 @@ import com.friendy.services.UserService;
 //https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/package-summary.html
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
 //imports to enable sending error and http status codes/messages
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
@@ -57,11 +58,15 @@ public class UserController {
     //Update to pass session object (establish session in Service)
     @PostMapping("/auth_friendy")
     //return response entity over plain string object
-    public ResponseEntity<String> authenticateUser(@RequestBody User user, HttpSession session){
+    public ResponseEntity<String> authenticateUser(@RequestBody User user, HttpSession session, HttpServletRequest request){
+        String csrfToken = request.getHeader("X-CSRF_TOKEN");
+        System.out.println("CSRF Token received: " + csrfToken);
         ResponseEntity<String> response = userService.authUser(user, session);
+
         System.out.println("Session ID: " + session.getId());
         System.out.println("LoggedIn Status: " + session.getAttribute("loggedIn"));
         System.out.println("UserId: " + session.getAttribute("userId"));
+        
         return response;
         // return userService.authUser(user, session);
     }

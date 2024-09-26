@@ -9,6 +9,11 @@ const Viewer = () => {
     const allEvents = async () => {
         try{
             const response = await fetch("http://localhost:5500/events");
+            if (!response.ok) {
+                const errorMsg = await response.text();
+                console.error("Failed to fetch events:", response.status, errorMsg);
+                return;
+            }
             const data = await response.json();
             setEvents(data);
         } catch (error) {
