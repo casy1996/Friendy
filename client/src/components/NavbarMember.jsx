@@ -1,7 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavbarMember = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try{
+            await fetch("http://localhost:5500/logout",{
+                method: "POST",
+                credentials: "include",
+            });
+            navigate("/friendy");
+
+        } catch (error) {
+            console.error("Error during logout:", errror);
+        }
+    }
+
   return (
     <nav>
         <div>
@@ -16,9 +31,9 @@ const NavbarMember = () => {
         <Link to="/user_profile">
             <h1>profile</h1>
         </Link>
-        <Link to="/friendy">
+        <button onClick={handleLogout}>
             <h1>logout</h1>
-        </Link>
+        </button>
         </div>
     </nav>
   );

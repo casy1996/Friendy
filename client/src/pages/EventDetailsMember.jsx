@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import NavbarMember from "../components/NavbarMember";
-import { getCsrfToken } from "../utils/csrfUtil";
 
 const EventDetailMember = () => {
     const params = useParams();
@@ -12,12 +11,10 @@ const EventDetailMember = () => {
 
     const oneEvent = async () => {
         try {
-            const csrfToken = getCsrfToken();
             const response = await fetch(`http://localhost:5500/events/${id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": csrfToken
                 },
             credentials: "include"
             });
@@ -40,7 +37,6 @@ const EventDetailMember = () => {
 
     const handleJoin = async () => {
         try {
-            const csrfToken = getCsrfToken();
             if (event.attendees.length >= event.capacity){
                 console.error("Failed to join event, event at capacity");
             } else {
@@ -48,7 +44,6 @@ const EventDetailMember = () => {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": csrfToken,
                     },
                     credentials: "include"
                 });

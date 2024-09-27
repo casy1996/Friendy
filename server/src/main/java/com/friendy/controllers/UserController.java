@@ -64,8 +64,8 @@ public class UserController {
     @PostMapping("/auth_friendy")
     //return response entity over plain string object
     public ResponseEntity<String> authenticateUser(@RequestBody User user, HttpSession session, HttpServletRequest request){
-        String csrfToken = request.getHeader("X-CSRF_TOKEN");
-        System.out.println("CSRF Token received: " + csrfToken);
+        // String csrfToken = request.getHeader("X-CSRF_TOKEN");
+        // System.out.println("CSRF Token received: " + csrfToken);
         ResponseEntity<String> response = userService.authUser(user, session);
 
         System.out.println("Session ID: " + session.getId());

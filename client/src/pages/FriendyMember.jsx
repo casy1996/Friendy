@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavbarMember from "../components/NavbarMember";
-import { getCsrfToken } from "../utils/csrfUtil";
 
 const Member = () => {
     const [events, setEvents] = useState([]);
@@ -11,12 +10,8 @@ const Member = () => {
 
     const allEvents = async () => {
         try{
-            const csrfToken = await getCsrfToken();
             const response = await fetch("http://localhost:5500/events", {
                 method: "GET",
-                headers: {
-                    "X-CSRF-TOKEN": csrfToken,
-                },
                 credentials: "include"
             });
             

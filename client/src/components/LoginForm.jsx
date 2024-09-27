@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { getCsrfToken } from '../utils/csrfUtil';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -17,12 +16,10 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
-            const csrfToken = await getCsrfToken();
             const response = await fetch("http://localhost:5500/auth_friendy", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": csrfToken,
                 },
                 credentials: "include",
                 body: JSON.stringify(formData)

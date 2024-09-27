@@ -28,16 +28,14 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .cors().and()
-            .csrf(csrf -> csrf
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-            )
+            .csrf().disable()
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/csrf").permitAll()
                 .requestMatchers("/events").permitAll()
                 .requestMatchers("/events/**").permitAll()
                 .requestMatchers("/events/*/join").permitAll()
                 .requestMatchers("/create_event").permitAll()
                 .requestMatchers("/my_events").permitAll()
+                .requestMatchers("/create_friendy").permitAll()
                 .requestMatchers("/auth_friendy").permitAll()
                 .requestMatchers("/users/**").permitAll()
                 .requestMatchers("/users/*/delete").permitAll()
