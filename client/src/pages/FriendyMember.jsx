@@ -11,7 +11,7 @@ const Member = () => {
 
     const allEvents = async () => {
         try{
-            const csrfToken = getCsrfToken();
+            const csrfToken = await getCsrfToken();
             const response = await fetch("http://localhost:5500/events", {
                 method: "GET",
                 headers: {

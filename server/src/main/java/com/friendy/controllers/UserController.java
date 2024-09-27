@@ -53,6 +53,11 @@ public class UserController {
         return userService.createNew(newUser);
     }
 
+    @GetMapping("/auth_friendy")
+    public ResponseEntity<String> showLoginForm(){
+        return ResponseEntity.ok("Login");
+    }
+    
     //Endpoint to authenticate a user
     //Where the login page POSTs, to find user & check password match
     //Update to pass session object (establish session in Service)
