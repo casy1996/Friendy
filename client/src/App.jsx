@@ -11,6 +11,7 @@ import EditEvent from "./pages/EditEvent";
 import CreateEvent from "./pages/CreateEvent";
 import EditProfile from "./pages/EditProfile";
 import About from "./pages/AboutUs";
+import MyEvents from "./pages/MyEvents";
 import Profile from "./pages/Profile";
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/host-event" element={<CreateEvent/>} />
         <Route path="/users/:id/edit" element={<EditProfile/>} />
         <Route path="/about-us" element={<About/>} />
+        <Route path="/my-events" element={<MyEvents/>} />
         <Route path="/my-profile/:id" element={<Profile />} />
       </Routes>
     </Router>

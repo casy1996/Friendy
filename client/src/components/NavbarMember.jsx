@@ -31,7 +31,7 @@ const NavbarMember = () => {
         <Link to="/host-event">
             <h1>Host</h1>
         </Link> 
-        <Link to="/my_events">
+        <Link to="/my-events">
             <h1>My_Events</h1>
         </Link>
         {userId && (
