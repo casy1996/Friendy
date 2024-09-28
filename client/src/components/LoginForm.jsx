@@ -24,17 +24,17 @@ const LoginForm = () => {
                 credentials: "include",
                 body: JSON.stringify(formData)
             });
-            
+            const data = await response.json();
             if (response.ok){
                 localStorage.setItem("authenticated", true);
-                // console.log(formData);
+                sessionStorage.setItem("userId", data.userId);
                 navigate("/friendy-home");
             } else {
-                console.error("Failed to login");
+                console.error("Failed to login", data);
             }
         } catch (error) {
             console.error("Failed to login.", error);
-        };
+        }
     };
 
     return (

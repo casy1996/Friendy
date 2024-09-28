@@ -15,8 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 //imports to enable sending error and http status codes/messages
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-
-
+import java.util.Map;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,10 +62,10 @@ public class UserController {
     //Update to pass session object (establish session in Service)
     @PostMapping("/auth_friendy")
     //return response entity over plain string object
-    public ResponseEntity<String> authenticateUser(@RequestBody User user, HttpSession session, HttpServletRequest request){
+    public ResponseEntity<Map<String, Object>> authenticateUser(@RequestBody User user, HttpSession session){
         // String csrfToken = request.getHeader("X-CSRF_TOKEN");
         // System.out.println("CSRF Token received: " + csrfToken);
-        ResponseEntity<String> response = userService.authUser(user, session);
+        ResponseEntity<Map<String, Object>> response = userService.authUser(user, session);
 
         System.out.println("Session ID: " + session.getId());
         System.out.println("LoggedIn Status: " + session.getAttribute("loggedIn"));

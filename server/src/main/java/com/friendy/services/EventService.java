@@ -17,12 +17,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ArrayList;
 import java.util.Collections;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 @Service
 public class EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
+    //directory of image storage
+    private final String uploadDirectory = "src/main/resources/static/images/uploads";
 
     public EventService(final EventRepository eventRepository, final UserRepository userRepository) {
         this.eventRepository = eventRepository;
@@ -157,5 +164,29 @@ public class EventService {
             return Collections.emptyList();
         }
     }
+
+    public ResponseEntity<String> updateEventPicture(Integer eventId, Integer connectedUserId, MultipartFile file) throws IOException {
+        Optional<Event> foundEvent = eventRepository.findById(eventId);
+        if (foundEvent.isPresent()) {
+            Event eventToUpdate = foundEvent.get();
+            if (eventToUpdate.getUser().getId() == connectedUserId) {
+                // Generate a file name and save the file to the uploads directory
+                String fileName = eventId + "_" + file.getOriginalFilename();
+                Path filePath = Paths.get(uploadDirectory, "events", fileName);
+                Files.createDirectories(filePath.getParent());  // Ensure directory exists
+                Files.write(filePath, file.getBytes());
+
+                // Update the event's picture URL
+                eventToUpdate.setEventPicture("/images/uploads/events/" + fileName);
+                eventRepository.save(eventToUpdate);  // Persist changes
+                return ResponseEntity.ok("Event picture updated successfully!");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Not authorized to update this event.");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Event not found.");
+        }   
+    }
+
 
 }

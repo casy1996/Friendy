@@ -10,12 +10,15 @@ const NavbarMember = () => {
                 method: "POST",
                 credentials: "include",
             });
+            sessionStorage.removeItem("userId");
             navigate("/friendy");
 
         } catch (error) {
-            console.error("Error during logout:", errror);
+            console.error("Error during logout:", error);
         }
     }
+
+    const userId = sessionStorage.getItem("userId");
 
   return (
     <nav>
@@ -28,9 +31,11 @@ const NavbarMember = () => {
         <Link to="/my_events">
             <h1>my_events</h1>
         </Link>
-        <Link to="/user_profile">
-            <h1>profile</h1>
-        </Link>
+        {userId && (
+            <Link to={`/my-profile/${userId}`}>
+                <h1>profile</h1>
+            </Link>
+        )}
         <button onClick={handleLogout}>
             <h1>logout</h1>
         </button>

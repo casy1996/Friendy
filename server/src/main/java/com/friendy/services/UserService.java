@@ -15,8 +15,14 @@ import jakarta.servlet.http.HttpSession;
 //import to enable sending error and http status codes/messages
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-
-
+//imports for file handling
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +31,8 @@ public class UserService {
     private final UserRepository userRepository;
     //instance field for using BCryptPasswordEncoder, named bcrypt
     private final BCryptPasswordEncoder bcrypt;
+    //directory for image storage
+    private final String uploadDirectory = "src/main/resources/static/images/uploads";
 
     public UserService(final UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -52,7 +60,7 @@ public class UserService {
     }
 
     //Update to accept session object
-    public ResponseEntity<String> authUser(User user, HttpSession session){
+    public ResponseEntity<Map<String, Object>> authUser(User user, HttpSession session){
         Optional<User> findUser = userRepository.findByUserName(user.getUserName());
 
         //If username exists: check if entered password matches
@@ -65,15 +73,23 @@ public class UserService {
                 session.setAttribute("userId", friendyMember.getId());
                 session.setAttribute("userName", friendyMember.getUserName());
                 session.setAttribute("loggedIn", true);
-                // System.out.println("User authenticated: " + friendyMember.getUserName());                return ResponseEntity.ok("Member Authenticated");
-                return ResponseEntity.ok("Member Authenticated");
+
+                Map<String, Object> response = new HashMap<>();
+                response.put("message", "Member Authenticated");
+                response.put("userId", friendyMember.getId());
+
+                return ResponseEntity.ok(response);
                 //else wrong password
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Password");
+                Map<String, Object> errorMsg = new HashMap<>();
+                errorMsg.put("message", "Incorrect Password");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMsg);
             } 
         }
         //Error if no username found
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username not found");
+        Map<String, Object> errorMsg = new HashMap<>();
+        errorMsg.put("message", "Username not found");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMsg);
     }
 
     //Update Profile
@@ -132,6 +148,33 @@ public class UserService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to find user");
         }
+    }
+
+    public ResponseEntity<String> updateProfilePicture(Integer id, MultipartFile file) throws IOException {
+    Optional<User> foundUser = userRepository.findById(id);
+
+        if (!foundUser.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+
+        User user = foundUser.get();
+
+        // Ensure the file is not empty and is a valid image format (jpg/png)
+        if (file.isEmpty() || !(file.getContentType().equals("image/jpeg") || file.getContentType().equals("image/png"))) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid file type. Only JPEG and PNG are allowed.");
+        }
+
+        // Generate a file name and save the file to the uploads directory
+        String fileName = id + "_" + System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        Path filePath = Paths.get(uploadDirectory, "users", fileName);
+        Files.createDirectories(filePath.getParent());  // Ensure directory exists
+        Files.write(filePath, file.getBytes());
+
+        // Update the user's profile picture URL
+        user.setProfilePicture("/images/uploads/users/" + fileName);
+        userRepository.save(user);  // Persist changes
+
+        return ResponseEntity.ok("Profile picture updated successfully!");
     }
 
 // End of User Service Class

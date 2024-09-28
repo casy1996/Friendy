@@ -151,6 +151,25 @@ public class Event {
         this.capacity = capacity;
     }
 
+    @Column(name="EVENT_PICTURE")
+    private String eventPicture;
+
+    public String getEventPicture(){
+        return eventPicture;
+    }
+
+    public void setEventPicture(String eventPicture){
+        this.eventPicture = eventPicture;
+    }
+
+    @Transient
+    public String getEventDefault() {
+        if (eventPicture == null || eventPicture.isEmpty()) {
+            return "/images/event_default.png";
+        }
+        return eventPicture;
+    }
+
     //ONE [USER] MANY [EVENTS]
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)

@@ -4,20 +4,6 @@
 //allows file to be imported to others
 package com.friendy.models;
 
-// import javax.persistence.Entity;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.Id;
-// import javax.persistence.Column;
-// import javax.persistence.Table;
-    //Check Springboot Version (version: 3.3.3 = use Jakarta package not Javax package)
-
-    //Change to Jakarta packages
-// import Jakarta.persistence.Entity;
-// import Jakarta.persistence.GeneratedValue;
-// import Jakarta.persistence.Id;
-// import Jakarta.persistence.Column;
-// import Jakarta.persistence.Table;
-    //Import All
 import jakarta.persistence.*;
 // enables @NotNull/@Email/@Size constraints from jakarta.validation API dependency
 import jakarta.validation.constraints.*;
@@ -129,6 +115,25 @@ public class User {
 
     public void setCity(String city){
         this.city = city;
+    }
+
+    @Column(name="PROFILE_PICTURE")
+    private String profilePicture;
+
+    public String getProfilePicture(){
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture){
+        this.profilePicture = profilePicture;
+    }
+
+    @Transient
+    public String getProfileDefault() {
+        if (profilePicture == null || profilePicture.isEmpty()) {
+            return "/images/profile_default.png";
+        }
+        return profilePicture;
     }
 
     //Create a joined table showing all events that an individual user has joined AND every user in a specific event.

@@ -28,7 +28,6 @@ const Viewer = () => {
     return (
         <div>
             <NavbarViewer/>
-            {/* add search bar to find new array of events */}
             <div>
                 {events.length === 0 ? ( <p> No events at this moment</p> ) : (
                     events.map(event => (
