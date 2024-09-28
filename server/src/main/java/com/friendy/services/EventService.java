@@ -188,5 +188,16 @@ public class EventService {
         }   
     }
 
+    public ResponseEntity<List<Event>> usersCreated(Integer id){
+        Optional<User> foundUser = userRepository.findById(id);
+        if (foundUser.isPresent()) {
+            User user = foundUser.get();
+            List<Event> createdEvents = eventRepository.findByUser(user);
+            return ResponseEntity.ok(createdEvents);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 
 }

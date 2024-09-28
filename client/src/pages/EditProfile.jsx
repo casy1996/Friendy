@@ -63,23 +63,40 @@ const EditProfile = () => {
     };
 
     const handleDelete = async () => {
-        const confirmed = window.confirm("Are you sure you want to deactivate your account?");
+        try{
+            const response = await fetch(`http://localhost:5500/users/${id}/created-events`, {
+                method: "GET",
+                credentials: "include"
+            });
 
-        if (confirmed) {
-            try {
-                const response = await fetch(`http://localhost:5500/users/${id}`, {
-                    method: "DELETE",
-                    credentials: "include"
-                });
-                if (response.ok){
-                    alert("Successfully deleted account.")    
-                    navigate("/friendy");
-                } else {
-                    alert("Failed to delete account.");
-                }
-            } catch (error) {
-                alert("Failed to delete account. Catch error", error)
+            if (!response.ok){
+                alert("Failed to fetch user's events.");
+                return;
             }
+
+            const events = await response.json();
+
+            if(events.length > 0) {
+                alert("You must delete your created events before deactivating your account");
+            } else {
+                const confirmed = window.confirm("Are you sure you want to deactivate your account?");
+                if (confirmed) {
+                    const deleteResponse = await fetch(`http://localhost:5500/users/${id}`, {
+                        method: "DELETE",
+                        credentials: "include"
+                    });
+
+                    if (deleteResponse.ok){
+                        alert("Successfully deleted account.");
+                        navigate("/friendy");
+                    } else {
+                        alert("Failed to delete account.");
+                    }
+                }
+            }
+        } catch (error) {
+            console.error("Error while deleting account:", error);
+            alert("Deactivation failed.");
         }
     };
     

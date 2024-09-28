@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import java.util.List;
 import java.util.Optional;
+import java.util.Collections;
 
 @RestController
 public class EventController {
@@ -121,7 +122,7 @@ public class EventController {
 
     //Get all events that a User has joined/created by checking attendees list
     @GetMapping("/my_events")
-        public ResponseEntity<?> myEvents(HttpSession session) {
+    public ResponseEntity<?> myEvents(HttpSession session) {
         if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
             //if loggedIn status, pull the sessions id "connectedUserId"
             Integer connectedUserId = (Integer) session.getAttribute("userId");
@@ -138,5 +139,20 @@ public class EventController {
         }
     }
 
+    //Get a users created events
+    @GetMapping("/users/{id}/created-events")
+    public ResponseEntity<List<Event>> getCreatedEvents(@PathVariable Integer id, HttpSession session) {
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")){
+            //retrieve users session id
+            Integer connectedUserId = (Integer) session.getAttribute("userId");
+            if(connectedUserId.equals(id)) {
+                return eventService.usersCreated(id);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.emptyList());
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.emptyList());
+        }
+    }
 
 }
