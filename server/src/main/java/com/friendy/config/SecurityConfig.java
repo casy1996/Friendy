@@ -38,7 +38,8 @@ public class SecurityConfig{
                 .requestMatchers("/create_friendy").permitAll()
                 .requestMatchers("/auth_friendy").permitAll()
                 .requestMatchers("/users/**").permitAll()
-                .requestMatchers("/users/*/delete").permitAll()
+                // .requestMatchers("/users/*/delete").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "users/*").permitAll()
                 .requestMatchers("/logout").permitAll()
                 .anyRequest().authenticated()
             )
@@ -46,7 +47,13 @@ public class SecurityConfig{
             .and()
             .logout()
             .logoutSuccessUrl("/auth_friendy") 
-            .invalidateHttpSession(true);
+            .invalidateHttpSession(true)
+            .and()
+            .exceptionHandling()
+            .accessDeniedHandler((request, response, accessDeniedException) -> {
+                System.out.println("Access Denied: " + accessDeniedException.getMessage());
+                response.sendRedirect("/auth_friendy");
+            });
 
         return http.build();
     }

@@ -67,18 +67,18 @@ const EditProfile = () => {
 
         if (confirmed) {
             try {
-                const response = await fetch(`http://localhost:5500/events/${id}`, {
+                const response = await fetch(`http://localhost:5500/users/${id}`, {
                     method: "DELETE",
-                    credentials: "incldue"
+                    credentials: "include"
                 });
                 if (response.ok){
                     alert("Successfully deleted account.")    
-                    navigate("/friendy-home");
+                    navigate("/friendy");
                 } else {
                     alert("Failed to delete account.");
                 }
             } catch (error) {
-                alert("Failed to delete account", error)
+                alert("Failed to delete account. Catch error", error)
             }
         }
     };

@@ -105,7 +105,7 @@ public class UserController {
     }
 
     //Delete User (Delete my account)
-    @DeleteMapping("/users/{id}/delete")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<String> deleteAccount(@PathVariable Integer id, HttpSession session){
         // check logged in , if conditional - same as update
         if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")){
