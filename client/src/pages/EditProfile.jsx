@@ -25,7 +25,7 @@ const EditProfile = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await fetch(`http://localhost:55000/users/${id}`,{
+            const response = await fetch(`http://localhost:5500/users/${id}`,{
                 method: "GET",
                 credentials: "include",
             });
@@ -45,7 +45,7 @@ const EditProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:55000/users/${id}`, {
+        const response = await fetch(`http://localhost:5500/users/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -56,11 +56,34 @@ const EditProfile = () => {
 
         if (response.ok) {
             alert("Profile Updated!");
-            navigate("/my-profile");
+            navigate(`/my-profile/${id}`);
         } else {
             alert("Failed to update profile.");
         }
     };
+
+    const handleDelete = async () => {
+        const confirmed = window.confirm("Are you sure you want to deactivate your account?");
+
+        if (confirmed) {
+            try {
+                const response = await fetch(`http://localhost:5500/events/${id}`, {
+                    method: "DELETE",
+                    credentials: "incldue"
+                });
+                if (response.ok){
+                    alert("Successfully deleted account.")    
+                    navigate("/friendy-home");
+                } else {
+                    alert("Failed to delete account.");
+                }
+            } catch (error) {
+                alert("Failed to delete account", error)
+            }
+        }
+    };
+    
+
     return (
         <div>
             <NavbarMember/>
@@ -108,7 +131,6 @@ const EditProfile = () => {
                     <input
                         type="password"
                         name="password"
-                        value="********"
                         onChange={handleChange}
                     />
                 </label>
@@ -132,6 +154,11 @@ const EditProfile = () => {
                 </label>
                 <button type="submit">Update Profile</button>
             </form>
+
+            <div>
+                <button onClick={handleDelete}>Deactivate Account</button>
+            </div>
+
         </div>
     );
 };
