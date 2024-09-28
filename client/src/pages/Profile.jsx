@@ -82,6 +82,8 @@ const UserDetails = () => {
             <NavbarMember/>
 
             <div className="profilePage">
+                <br></br>
+                <br></br>
                 <div>
                 <img src={`${user.profilePicture}`} alt="Profile Photo" />
                 <input type="file" onChange={handleFile} />

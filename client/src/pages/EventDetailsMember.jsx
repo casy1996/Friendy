@@ -104,8 +104,7 @@ const EventDetailMember = () => {
             <div className="leftDetail">
             <h1>{event.event}</h1>
             <h2>hosted by {event.user.userName}</h2>
-            <br />
-            <p>When: {event.date}</p>
+            <p>Date: {event.date}</p>
             <p>Time: {event.startTime} = {event.endTime}</p>
             <p>{event.description}</p>
             <button onClick={handleJoin}>Join</button>

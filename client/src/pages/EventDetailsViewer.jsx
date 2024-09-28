@@ -28,7 +28,7 @@ const EventDetailViewer = () => {
     }, [id]);
 
     const handleJoin = async () => {
-        console.error("Please create an account to join events");
+        alert("Please create an account to join events");
     };
 
     if (!event.event) {
@@ -44,9 +44,7 @@ const EventDetailViewer = () => {
             <div className="leftDetail">
             <h1>{event.event}</h1>
             <h2>hosted by {event.user.userName}</h2>
-            {/* line break */}
-            <br />
-            <p>When: {event.date}</p>
+            <p>Date: {event.date}</p>
             <p>Time: {event.startTime} = {event.endTime}</p>
             <p>{event.description}</p>
             <button onClick={handleJoin}>Join</button>

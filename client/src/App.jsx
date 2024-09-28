@@ -8,6 +8,7 @@ import Member from "./pages/FriendyMember";
 import EventViewer from "./pages/EventDetailsViewer";
 import EventMember from "./pages/EventDetailsMember";
 // import EditEvent from "./pages/EditEvent";
+import CreateEvent from "./pages/CreateEvent";
 import EditProfile from "./pages/EditProfile";
 import About from "./pages/AboutUs";
 import Profile from "./pages/Profile";
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/viewer/events/:id" element={<EventViewer/>} />
         <Route path="/member/events/:id" element={<EventMember/>} />
         {/* <Route path="/events/:id/edit" element={<EditEvent/>} /> */}
+        <Route path="/host-event" element={<CreateEvent/>} />
         <Route path="/users/:id/edit" element={<EditProfile/>} />
         <Route path="/about-us" element={<About/>} />
         <Route path="/my-profile/:id" element={<Profile />} />

@@ -44,9 +44,9 @@ const Member = () => {
                         <div key={event.id} className="event-card">
                             <Link to={`/member/events/${event.id}`}>
                             <h2>{event.event}</h2>
-                            <h4>{event.eventCity},{event.eventState}</h4>
-                            <h4>hosted by {event.userName}</h4>
-                            <img src={`${event.image}`} alt={`${event.event}`}></img>
+                            <h4>{event.eventCity}, {event.eventState}</h4>
+                            <h4>hosted by {event.user.userName}</h4>
+                            <img src={`${event.eventPicture}`} alt={`${event.event}`}></img>
                             </Link>
                         </div>
                     ))
