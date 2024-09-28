@@ -23,7 +23,7 @@ const EventForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5500/create_event", {
+            await fetch("http://localhost:5500/create_event", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

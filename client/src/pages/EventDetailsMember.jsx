@@ -27,7 +27,7 @@ const EventDetailMember = () => {
             const data = await response.json();
             setEvent(data);
         } catch (error) {
-            console.error(`Failed to open entry`, error);
+            console.error("Failed to open entry", error);
         }
     };
 
