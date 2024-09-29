@@ -55,6 +55,8 @@ public class UserService {
         //Instead of passing plaint text to the database...
         //Pass the password from our User object through bcrypt encode method to encyrpt it. Then perform password setter
         newUser.setPassword(bcrypt.encode(newUser.getPassword()));
+        //add a default profile picture on creation
+        newUser.setProfilePicture("/images/profile_default.png");
         //Save encrypted password
         return userRepository.save(newUser);
     }

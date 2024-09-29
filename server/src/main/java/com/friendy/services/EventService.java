@@ -45,6 +45,7 @@ public class EventService {
     }
 
     public Event hostNew(Event newEvent){
+        newEvent.setEventPicture("/images/event_default.png");
         return eventRepository.save(newEvent);
     }
 

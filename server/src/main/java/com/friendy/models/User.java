@@ -128,14 +128,6 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-    @Transient
-    public String getProfileDefault() {
-        if (profilePicture == null || profilePicture.isEmpty()) {
-            return "/images/profile_default.png";
-        }
-        return profilePicture;
-    }
-
     //Create a joined table showing all events that an individual user has joined AND every user in a specific event.
     //user_id is the foreign key in EVENTS, that references a specific user
     //event_id references the primary key of an event. 

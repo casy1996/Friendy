@@ -162,13 +162,6 @@ public class Event {
         this.eventPicture = eventPicture;
     }
 
-    @Transient
-    public String getEventDefault() {
-        if (eventPicture == null || eventPicture.isEmpty()) {
-            return "/images/event_default.png";
-        }
-        return eventPicture;
-    }
 
     //ONE [USER] MANY [EVENTS]
     @ManyToOne

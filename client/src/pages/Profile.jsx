@@ -72,6 +72,7 @@ const UserDetails = () => {
         }
     };
 
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     if (!user.userName) {
         return <div>Loading...</div>
@@ -85,7 +86,7 @@ const UserDetails = () => {
                 <br></br>
                 <br></br>
                 <div>
-                <img src={`${user.profilePicture}`} alt="Profile Photo" />
+                <img src={`${apiUrl}${user.profilePicture}`} alt={`${user.event}`}></img>
                 <input type="file" onChange={handleFile} />
                 <button onClick={handleUpload}>Upload Profile Picture</button>
                 </div>
