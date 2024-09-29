@@ -8,6 +8,7 @@ const EventDetailMember = () => {
     const id = params.id;
     const navigate = useNavigate();
     const [event, setEvent] = useState({});
+    const [photo, setPhoto] = useState(null);
 
     const oneEvent = async () => {
         try {
@@ -85,6 +86,35 @@ const EventDetailMember = () => {
         }
     };
 
+    const handleFile = (e) => {
+        setPhoto(e.target.files[0]);
+    };
+
+    const handleUpload = async () => {
+        if (!photo) return;
+        const formData = new FormData();
+        formData.append("file", photo);
+
+        try {
+            const response = await fetch(`http://localhost:5500/events/${id}/upload`, {
+                method: "POST",
+                body: formData,
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                alert("Event picture updated successfully!");
+                oneEvent();
+            } else {
+                console.error("Error updating event picture");
+            }
+        } catch (error) {
+            console.error("Failed to upload event picture", error);
+        }
+    };
+
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     if (!event.event) {
         return <div>Loading...</div>
     };
@@ -111,7 +141,10 @@ const EventDetailMember = () => {
             </div>
 
             <div className="rightDetail">
-                {/* Google API Map or event image */}
+                <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`}></img>
+                <br></br>
+                <input type="file" onChange={handleFile} />
+                <button onClick={handleUpload}>Change Event Picture</button>
                 <p>{event.address}</p>
             </div>
 

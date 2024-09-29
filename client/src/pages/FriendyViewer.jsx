@@ -25,6 +25,8 @@ const Viewer = () => {
         allEvents();
     }, []);
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     return (
         <div>
             <NavbarViewer/>
@@ -36,7 +38,7 @@ const Viewer = () => {
                             <h2>{event.event}</h2>
                             <h4>{event.eventCity},{event.eventState}</h4>
                             <h4>hosted by {event.userName}</h4>
-                            <img src={`${event.image}`} alt={`${event.event}`}></img>
+                            <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`}></img>
                             </Link>
                         </div>
                     ))

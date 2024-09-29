@@ -86,9 +86,10 @@ const UserDetails = () => {
                 <br></br>
                 <br></br>
                 <div>
-                <img src={`${apiUrl}${user.profilePicture}`} alt={`${user.event}`}></img>
+                <img src={`${apiUrl}${user.profilePicture}`} alt={`${user.userName}`}></img>
+                <br></br>
                 <input type="file" onChange={handleFile} />
-                <button onClick={handleUpload}>Upload Profile Picture</button>
+                <button onClick={handleUpload}>Change Profile Picture</button>
                 </div>
 
                 <div>

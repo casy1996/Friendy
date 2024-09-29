@@ -39,6 +39,7 @@ public class SecurityConfig{
                 .requestMatchers("/auth_friendy").permitAll()
                 .requestMatchers("/users/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
+                .requestMatchers("/images/uploads/**").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "users/*").permitAll()
                 .requestMatchers("/logout").permitAll()
                 .anyRequest().authenticated()

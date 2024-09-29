@@ -31,6 +31,8 @@ const EventDetailViewer = () => {
         alert("Please create an account to join events");
     };
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     if (!event.event) {
         return <div>Loading...</div>
     };
@@ -51,7 +53,7 @@ const EventDetailViewer = () => {
             </div>
 
             <div className="rightDetail">
-                {/* Google API Map or event image */}
+                <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`}></img>
                 <p>{event.address}</p>
             </div>
 
