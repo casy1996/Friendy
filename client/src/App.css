@@ -5,6 +5,8 @@
   text-align: center;
 }
 
+/* ========== LANDING ========== */
+
 .landingBackground {
   position: absolute;
   padding-top: 30px;
@@ -39,14 +41,16 @@
   text-decoration: none;
   color: white;
   padding-top: 5px;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 400;
   letter-spacing: 0.8px;
   text-shadow: 2px 2px 2px rgb(53, 53, 53);
+  /* text-shadow: 2px 2px 1px rgb(186, 186, 186); */
 }
 
 .guestBtn a:hover {
-  color: rgb(178, 178, 178);
+  /* color: rgb(178, 178, 178); */
+  color: rgb(250, 160, 58);
 }
 
 .logBtn {
@@ -71,6 +75,8 @@
   text-align: center;
 }
 
+/* ========== NAVBARs ========== */
+
 .navStandard {
   position: fixed;
   width: 100vw;
@@ -85,7 +91,8 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  font-size: 20px;
+  font-size: 24px;
+  font-style: normal;
   color: black;
   padding-left: 20px
 }
@@ -95,18 +102,28 @@
   color: rgb(3, 1, 23);
 }
 
+.navLanding h1 {
+  font-style: italic;
+  font-family: " Lora", serif;
+  letter-spacing: 0.7px;
+}
+
 .navOptions {
   display: flex;
   gap: 20px;
   padding-right: 20px;
   font-weight: 550;
   letter-spacing: 0.3px;
+  font-family: " Lora", serif;
+  letter-spacing: 0.7px;
+  font-size: 27px;
 }
 
 .navOptions a:hover {
   color: rgb(164, 164, 164);
 }
 
+/* ========== ABOUT ========== */
 .aboutme {
   padding-top: 120px;
   padding-left: 200px;
@@ -139,11 +156,68 @@
 
 .aboutcontainer {
   background-color: rgba(151, 151, 151, 0.23);
-  border-radius: 10px;
+  border-radius: 5em;
   padding: 10px;
   padding-left: 50px;
   padding-right: 50px;
 }
+
+/* ========== CREATE ACC FORM ========== */
+
+.accountPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  padding-bottom: 20px;
+  min-height: 100vh;
+}
+
+.accountTitle img {
+  max-width: 280px;
+  max-height: 140px;
+  margin-bottom: -20px;
+  height: auto;
+}
+
+.accountBorder {
+  border: 1.8px solid rgb(171, 171, 171);
+  border-radius: 8px;
+  padding: 20px 20px 40px 20px;
+  width: 400px;
+  box-shadow: 0 2px 8px rgb(196, 196, 196);
+}
+
+.accountForm input {
+  width: 190px;
+  padding: 10px;
+  margin: -3px;
+}
+.accountForm button {
+  margin-top: 10px;
+}
+
+.accountForm button:hover {
+  background-color: rgba(235, 113, 6, 0.734);
+  color:white;
+  font-weight: 600;
+  border-color: rgba(6, 6, 6, 0);
+  
+}
+
+.accountForm input:focus,
+.accountForm textarea:focus {
+  outline-color: rgb(245, 181, 148);
+  box-shadow: 0 0 3px rgb(255, 186, 217);
+}
+
+.passRule {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: -5px;
+}
+
 
 
 /* .logo {

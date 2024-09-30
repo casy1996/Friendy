@@ -7,11 +7,11 @@ const NavbarLanding = () => {
     <div className="navStandard">
 
       <nav className="navLanding">
-        <Link to="/friendy"><h1>Friendy</h1></Link>
+        <Link to="/friendy"><h1>friendy</h1></Link>
 
         <div className="navOptions">
-          <Link to="/about-us">About Us</Link>
-          <Link to="/friendy-guest">Events</Link>
+          <Link to="/about-us">about us</Link>
+          <Link to="/friendy-guest">events</Link>
         </div>
 
       </nav>

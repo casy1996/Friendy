@@ -24,19 +24,19 @@ const NavbarMember = () => {
     <nav>
         <div>
         <Link to="/friendy-home">
-            <h1>Friendy</h1>
+            <h1>friendy</h1>
         </Link>
         </div>
         <div>
         <Link to="/host-event">
-            <h1>Host</h1>
+            <h1>host</h1>
         </Link> 
         <Link to="/my-events">
-            <h1>My_Events</h1>
+            <h1>my events</h1>
         </Link>
         {userId && (
             <Link to={`/my-profile/${userId}`}>
-                <h1>Profile</h1>
+                <h1>profile</h1>
             </Link>
         )}
         <button onClick={handleLogout}>

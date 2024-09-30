@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../App.css";
 
 const AccountForm = () => {
     const navigate = useNavigate();
@@ -37,40 +38,40 @@ const AccountForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Email</label>
+                {/* <label>Email</label> */}
                 <br></br>
-                <input type="text" name="email" onChange={handleChange} required/>
+                <input type="text" name="email" onChange={handleChange} placeholder="Email" required/>
             </div>
             <div>
-                <label>Password</label>
+                {/* <label>Password</label> */}
                 <br></br>
-                <input type="text" name="password" onChange={handleChange} required/>
-                <p>Minimum 6 characters in length</p>
+                <input type="password" name="password" onChange={handleChange} placeholder="Password" required/>
+                <p className="passRule">Minimum 6 characters</p>
             </div>
             <div>
-                <label>Username</label>
+                {/* <label>Username</label> */}
                 <br></br>
-                <input type="text" name="userName" onChange={handleChange} required/>
+                <input type="text" name="userName" onChange={handleChange} placeholder="Username" required/>
             </div>
             <div>
-                <label>First Name</label>
+                {/* <label>First Name</label> */}
                 <br></br>
-                <input type="text" name="firstName" onChange={handleChange} required/>
+                <input type="text" name="firstName" onChange={handleChange} placeholder="First Name" required/>
             </div>
             <div>
-                <label>Last Name</label>
+                {/* <label>Last Name</label> */}
                 <br></br>
-                <input type="text" name="lastName" onChange={handleChange} required/>
+                <input type="text" name="lastName" onChange={handleChange} placeholder="Last Name" required/>
             </div>
             <div>
-                <label>State</label>
+                {/* <label>State</label> */}
                 <br></br>
-                <input type="text" name="state" onChange={handleChange} required/>
+                <input type="text" name="state" onChange={handleChange} placeholder="State" required/>
             </div>
             <div>
-                <label>City</label>
+                {/* <label>City</label> */}
                 <br></br>
-                <input type="text" name="city" onChange={handleChange} required/>
+                <input type="text" name="city" onChange={handleChange} placeholder="City" required/>
             </div>
             <br></br>
             <button type="submit">Continue</button>
