@@ -107,6 +107,45 @@
   color: rgb(164, 164, 164);
 }
 
+.aboutme {
+  padding-top: 120px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 65px;
+}
+
+.aboutme h1 {
+  font-size: 35px;
+  text-align: left;
+}
+
+.aboutme p {
+  position: relative;
+  text-align: justify;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.aboutpage {
+  background-color: rgb(188, 185, 172);
+}
+
+.tm {
+  display: flex;
+  justify-content: center;
+  padding-top: 230px;
+  padding-bottom: 5px;
+}
+
+.aboutcontainer {
+  background-color: rgba(151, 151, 151, 0.23);
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+
 /* .logo {
   height: 6em;
   padding: 1.5em;

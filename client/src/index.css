@@ -35,8 +35,6 @@ h1 {
   line-height: 1.1;
 }
 
-
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -92,10 +90,10 @@ button {
 }
 
 button:hover {
-  border-color: #cb6740;
+  border-color: #ee4e0ed9;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto #e79575;
 }
