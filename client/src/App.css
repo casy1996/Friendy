@@ -314,6 +314,18 @@
 
 .eventCard{
   background-color: rgba(211, 211, 211, 0.247);
+  border: 1px solid rgba(115, 113, 113, 0.233);
+  box-shadow: 0 0 3px rgba(139, 139, 139, 0.847);
+  border-radius: 15px;
+  flex: 1 1 20%;
+  max-width: 20%;
+  margin-bottom: 40px;
+  padding: 15px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.myEventCard{
+  background-color: rgba(211, 211, 211, 0.247);
   border: 2px solid rgba(115, 113, 113, 0.458);
   box-shadow: 0 0 3px rgba(139, 139, 139, 0.847);
   border-radius: 15px;
@@ -346,20 +358,23 @@
   }
 }
 
-.eventCard h2 {
+.eventCard h2,
+.myEventCard h2 {
   font-size: 24px;
   font-weight: 600;
   padding-bottom: 5px;
 }
 
-.eventCard h5 {
+.eventCard h5,
+.myEventCard h5 {
   font-size: 14px;
   text-align: left;
   font-weight: 400;
   margin-top: -15px;
 }
 
-.eventCard p {
+.eventCard p,
+.myEventCard p {
   font-size: 14px;
   text-align: left;
   margin-top: -20px;
@@ -367,6 +382,11 @@
 
 .eventCard a:active,
 .eventCard a:link {
+  text-decoration: none;
+}
+
+.myEventCard a:active,
+.myEventCard a:link {
   text-decoration: none;
 }
 
@@ -528,6 +548,11 @@
   outline: 4px auto #e79575;
 }
 
+.backLink a {
+  text-decoration: none;
+  color: rgba(110, 110, 110, 0.8);
+}
+
 /* ========== MY EVENTS ========== */
 
 .createEventPage {
@@ -539,11 +564,11 @@
 }
 
 .createBorder {
-  border: 1.8px solid rgb(171, 171, 171);
+  border: 2px solid rgba(171, 171, 171, 0.64);
   border-radius: 8px;
   padding: 20px 20px 40px 20px;
   width: 400px;
-  box-shadow: 0 2px 8px rgb(196, 196, 196);
+  box-shadow: 0 2px 8px rgba(154, 153, 153, 0.739);
 }
 
 .createTitle {
@@ -553,11 +578,14 @@
   
 .createForm {
   padding: 10px;
-  margin: 3px;
+  margin: 0px;
   font-size: 16px;
   box-sizing: border-box;
 }
   
+.createForm button {
+  background-color: rgba(193, 193, 193, 0.633);
+}
 .createForm button:hover {
   background-color: rgba(235, 113, 6, 0.734);
   color:white;

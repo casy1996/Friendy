@@ -28,6 +28,7 @@ const MyEvents = () => {
         usersEvents();
     }, []);
 
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     return (
         <div className="eventGallery">
@@ -36,12 +37,12 @@ const MyEvents = () => {
             <div className="eventContainer">
                 {events.length === 0 ? ( <p>Join an event or create your own to see them here.</p> ) : (
                     events.map(event => (
-                        <div key={event.id} className="eventCard">
+                        <div key={event.id} className="myEventCard">
                             <Link to={`/member/events/${event.id}`}>
                             <h2>{event.event}</h2>
                             <h5>📍{event.eventCity}, {event.eventState}</h5>
                             <p>hosted by {event.user.userName}</p>
-                            <img src={`${event.eventPicture}`} alt={`${event.event}`} className="cardImage"/>
+                            <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`} className="cardImage"/>
                             </Link>
                         </div>
                     ))

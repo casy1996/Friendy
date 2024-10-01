@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavbarViewer from "../components/NavbarViewer";
 
 const EventDetailViewer = () => {
@@ -42,13 +42,15 @@ const EventDetailViewer = () => {
         <div className="detailPage">
             <NavbarViewer/>
 
+
             <div className="detailContainer">
+            <div className="backLink"><Link to="/friendy-guest">Back</Link></div>
 
             <div className="leftDetail">
                 <h1>{event.event}</h1>
-                <h2>hosted by {event.user.userName}</h2>
-                <p>Date: {event.date}</p>
-                <p>Time: {event.startTime} - {event.endTime}</p>
+                <h3>hosted by {event.user.userName}</h3>
+                <h5>Date: {event.date}</h5>
+                <h5>Time: {event.startTime} - {event.endTime}</h5>
                 <p>{event.description}</p>
                 <button onClick={handleJoin}>Join</button>
             </div>

@@ -40,6 +40,8 @@ public class SecurityConfig{
                 .requestMatchers("/users/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
                 .requestMatchers("/images/uploads/**").permitAll()
+                .requestMatchers("/images/uploads/users/**").permitAll()
+                .requestMatchers("/images/uploads/events/**").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "users/*").permitAll()
                 .requestMatchers("/logout").permitAll()
                 .anyRequest().authenticated()

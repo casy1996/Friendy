@@ -147,7 +147,7 @@ const EventDetailMember = () => {
 
                 <div className="rightDetail">
                     <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`} />
-                    <h4>{event.address}</h4>
+                    <p>{event.address}</p>
 
                     <div className="rightOption">
                         <input type="file" id="upload" onChange={handleFile} className="uploadDefault" />

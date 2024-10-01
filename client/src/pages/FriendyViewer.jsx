@@ -37,7 +37,7 @@ const Viewer = () => {
                         <div key={event.id} className="eventCard">
                             <Link to={`/viewer/events/${event.id}`}>
                             <h2>{event.event}</h2>
-                            <h5>📍{event.eventCity}, {event.eventState}</h5>
+                            <h5>{event.eventCity}, {event.eventState}📍</h5>
                             <p>hosted by {event.user.userName}</p>
                             <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`} className="cardImage"/>
                             </Link>

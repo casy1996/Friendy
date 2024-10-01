@@ -42,18 +42,18 @@ const EventForm = () => {
         <form onSubmit={handleSubmit}>
             <div className="eventStart">
                 <div>
-                <label>Event:</label>
+                <label>Event</label>
                 <br></br>
                 <input type="text" name="event" onChange={handleChange} placeholder="Title" required/>
                 </div>
                 <div>
-                <label>Guest Limit:</label>
+                <label>Guest Limit</label>
                 <br></br>
                 <input type="text" name="capacity" onChange={handleChange} placeholder="Capacity" required/>
                 </div>
             </div>
             <div>
-                <label>Where:</label>
+                <label>Where</label>
                 <br></br>
                 <div className="eventLocation">
                 <input type="text" name="eventCity" onChange={handleChange} placeholder='City' required/>
@@ -61,27 +61,27 @@ const EventForm = () => {
                 </div>
             </div>
             <div className="eventAddress">
-                <label>Address:</label>
+                <label>Address</label>
                 <br></br>
                 <input type="text" name="address" onChange={handleChange} required/>
             </div>
             <div className="eventDate">
-                <label>Date:</label>
+                <label>Date</label>
                 <br></br>
                 <input type="date" name="date" onChange={handleChange} required/>
             </div>
             <div className="eventTime">
                 <div>
-                <label>Start:</label>
+                <label>Start</label>
                 <input type="time" name="startTime" onChange={handleChange} required/>
                 </div>
                 <div>
-                <label>End:</label>
+                <label>End</label>
                 <input type="time" name="endTime" onChange={handleChange} required/>
                 </div>
             </div>
             <div className="eventDesc">
-                <label>Description:</label>
+                <label>Description</label>
                 <br></br>
                 <input type="text" name="description" onChange={handleChange} required/>
             </div>
