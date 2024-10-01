@@ -30,18 +30,18 @@ const MyEvents = () => {
 
 
     return (
-        <div>
+        <div className="eventGallery">
             <NavbarMember/>
-            <br></br>
-            <div>
+
+            <div className="eventContainer">
                 {events.length === 0 ? ( <p>Join an event or create your own to see them here.</p> ) : (
                     events.map(event => (
-                        <div key={event.id} className="event-card">
+                        <div key={event.id} className="eventCard">
                             <Link to={`/member/events/${event.id}`}>
                             <h2>{event.event}</h2>
-                            <h4>{event.eventCity}, {event.eventState}</h4>
-                            <h4>hosted by {event.user.userName}</h4>
-                            <img src={`${event.eventPicture}`} alt={`${event.event}`}></img>
+                            <h5>📍{event.eventCity}, {event.eventState}</h5>
+                            <p>hosted by {event.user.userName}</p>
+                            <img src={`${event.eventPicture}`} alt={`${event.event}`} className="cardImage"/>
                             </Link>
                         </div>
                     ))

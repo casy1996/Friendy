@@ -120,6 +120,8 @@ const EventDetailMember = () => {
     };
 
     return (
+        <div className="detailBackground">
+
         <div className="detailPage">
             <NavbarMember/>
 
@@ -158,6 +160,7 @@ const EventDetailMember = () => {
             </div>
 
             
+        </div>
         </div>
     );
 };

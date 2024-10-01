@@ -38,6 +38,7 @@ const EventDetailViewer = () => {
     };
 
     return (
+        <div className="detailBackground">
         <div className="detailPage">
             <NavbarViewer/>
 
@@ -47,7 +48,7 @@ const EventDetailViewer = () => {
                 <h1>{event.event}</h1>
                 <h2>hosted by {event.user.userName}</h2>
                 <p>Date: {event.date}</p>
-                <p>Time: {event.startTime} = {event.endTime}</p>
+                <p>Time: {event.startTime} - {event.endTime}</p>
                 <p>{event.description}</p>
                 <button onClick={handleJoin}>Join</button>
             </div>
@@ -60,6 +61,7 @@ const EventDetailViewer = () => {
             </div>
 
             </div>
+        </div>
         </div>
     );
 };

@@ -176,19 +176,19 @@
   min-height: 100vh;
 }
 
-.accountTitle img {
-  max-width: 280px;
-  max-height: 140px;
-  margin-bottom: -20px;
-  height: auto;
-}
-
 .accountBorder {
   border: 1.8px solid rgb(171, 171, 171);
   border-radius: 8px;
   padding: 20px 20px 40px 20px;
   width: 400px;
   box-shadow: 0 2px 8px rgb(196, 196, 196);
+}
+
+.accountTitle img {
+  max-width: 280px;
+  max-height: 140px;
+  margin-bottom: -20px;
+  height: auto;
 }
 
 .accountForm input {
@@ -206,7 +206,6 @@
   color:white;
   font-weight: 600;
   border-color: rgba(6, 6, 6, 0);
-  
 }
 
 .accountForm input:focus,
@@ -298,7 +297,7 @@
 }
 
 
-/* ========== ALL EVENTS / MY EVENTS ========== */
+/* ========== ALL EVENTS ========== */
 .eventGallery {
   margin-top: 150px;
   margin-left: 50px;
@@ -333,7 +332,7 @@
 }
 @media (max-width: 1500px){
   .eventCard {
-    max-width: 25%;
+    max-width: 50%;
   }
 }
 @media (max-width: 1200px){
@@ -382,9 +381,10 @@
 
 /* ========== EVENT DETAILS ========== */
 
-body {
-  padding-bottom: 50px;
-  /* background-color: rgba(163, 173, 155, 0.917); */
+.detailBackground {
+  /* background-color: rgb(147, 175, 147); */
+  background-color: rgb(188, 185, 172);
+  padding: 40px 40px 100px 40px;
 }
 
 .detailPage {
@@ -526,6 +526,79 @@ body {
 
 .uploadImage:focus {
   outline: 4px auto #e79575;
+}
+
+/* ========== MY EVENTS ========== */
+
+.createEventPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.createBorder {
+  border: 1.8px solid rgb(171, 171, 171);
+  border-radius: 8px;
+  padding: 20px 20px 40px 20px;
+  width: 400px;
+  box-shadow: 0 2px 8px rgb(196, 196, 196);
+}
+
+.createTitle {
+  margin-bottom: -20px;
+  font-family: "lora", serif;
+}
+  
+.createForm {
+  padding: 10px;
+  margin: 3px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+  
+.createForm button:hover {
+  background-color: rgba(235, 113, 6, 0.734);
+  color:white;
+  font-weight: 600;
+  border-color: rgba(6, 6, 6, 0);
+}
+
+.createForm input:focus,
+.createForm textarea:focus {
+  outline-color: rgb(245, 181, 148);
+  box-shadow: 0 0 3px rgb(255, 186, 217);
+}
+
+.createForm input {
+  width: 171px;
+  padding: 10px;
+  margin: -4px;
+}
+
+.eventStart, 
+.eventLocation,
+.eventTime {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 15px 0px;
+}
+
+.eventAddress input {
+  width: 360px;
+}
+
+.eventDate {
+  padding-top: 14px;
+}
+
+.eventDate input {
+  width: 360px;
+}
+
+.eventDesc input {
+  width: 360px;
 }
 
 /* .logo {

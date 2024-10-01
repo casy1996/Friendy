@@ -18,13 +18,17 @@ const CreateEvent = () => {
     }, [navigate]);
 
     return (
-        <div>
+        <div className="createEventPage">
             <NavbarMember/>
-            <div>
-            <h1>Host an event!</h1>
-            <EventForm/>
+
+            <div className="createBorder">
+
+
+                <div className="createTitle"><h1>Host an event!</h1></div>
+                <div className="createForm"><EventForm/></div>
+
             </div>
-            <br></br>
+        
         </div>
     );
 };

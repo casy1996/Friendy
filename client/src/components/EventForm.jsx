@@ -40,49 +40,53 @@ const EventForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Event Title:</label>
+            <div className="eventStart">
+                <div>
+                <label>Event:</label>
                 <br></br>
-                <input type="text" name="event" onChange={handleChange} required/>
+                <input type="text" name="event" onChange={handleChange} placeholder="Title" required/>
+                </div>
+                <div>
+                <label>Guest Limit:</label>
+                <br></br>
+                <input type="text" name="capacity" onChange={handleChange} placeholder="Capacity" required/>
+                </div>
             </div>
             <div>
                 <label>Where:</label>
                 <br></br>
+                <div className="eventLocation">
                 <input type="text" name="eventCity" onChange={handleChange} placeholder='City' required/>
                 <input type="text" name="eventState" onChange={handleChange} placeholder='State'required/>
+                </div>
             </div>
-            <div>
+            <div className="eventAddress">
                 <label>Address:</label>
                 <br></br>
                 <input type="text" name="address" onChange={handleChange} required/>
             </div>
-            <div>
-                <label>Description:</label>
-                <br></br>
-                <input type="text" name="description" onChange={handleChange} required/>
-            </div>
-            <div>
+            <div className="eventDate">
                 <label>Date:</label>
                 <br></br>
                 <input type="date" name="date" onChange={handleChange} required/>
             </div>
-            <div>
+            <div className="eventTime">
+                <div>
                 <label>Start:</label>
-                <br></br>
                 <input type="time" name="startTime" onChange={handleChange} required/>
-            </div>
-            <div>
-                <label>End</label>
-                <br></br>
+                </div>
+                <div>
+                <label>End:</label>
                 <input type="time" name="endTime" onChange={handleChange} required/>
+                </div>
             </div>
-            <div>
-                <label>Max Capacity:</label>
+            <div className="eventDesc">
+                <label>Description:</label>
                 <br></br>
-                <input type="text" name="capacity" onChange={handleChange} required/>
+                <input type="text" name="description" onChange={handleChange} required/>
             </div>
             <br></br>
-            <button type="submit">Continue</button>
+            <button type="submit">Create</button>
         </form>
     );
 };
