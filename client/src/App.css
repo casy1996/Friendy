@@ -326,7 +326,7 @@
 }
 .myEventCard{
   background-color: rgba(211, 211, 211, 0.247);
-  border: 2px solid rgba(115, 113, 113, 0.458);
+  border: 1px solid rgba(115, 113, 113, 0.458);
   box-shadow: 0 0 3px rgba(139, 139, 139, 0.847);
   border-radius: 15px;
   flex: 1 1 20%;
@@ -629,39 +629,8 @@
   width: 360px;
 }
 
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.editEventTitle {
+  padding-bottom: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
 

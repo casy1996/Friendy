@@ -62,51 +62,67 @@ const EditEvent = () => {
     };
 
     return (
-        <div>
+        <div className="createEventPage">
             <NavbarMember/>
-            <h1>Edit Event Details</h1>
-            <h2>{formData.event}</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Event Title:
-                <input type="text" name="event" onChange={handleChange} value={formData.event} />
-                </label>
-                <label>Where:
-                <input type="text" name="eventCity" onChange={handleChange} value={formData.eventCity}/>
-                <input type="text" name="eventState" onChange={handleChange} value={formData.eventState}/>
-                </label>
-            <div>
-                <label>Address:</label>
+            <div className="createBorder">
+                <h1 className="createTitle editEventTitle">{formData.event}</h1>
+
+                <div className="createForm">
+                
+                <form onSubmit={handleSubmit}>
+
+                    <div className="eventStart">
+                        <div>
+                        <label>Event</label>
+                        <input type="text" name="event" onChange={handleChange} value={formData.event} />
+                        </div>
+                        <div>   
+                            <label>Guest Limit</label>
+                            <br></br>
+                            <input type="text" name="capacity" onChange={handleChange} value={formData.capacity}/>
+                        </div>
+                    </div>
+
+                <div>
+                    <label>Where</label>
+                    <div className="eventLocation">
+                        <input type="text" name="eventCity" onChange={handleChange} value={formData.eventCity}/>                        
+                        <input type="text" name="eventState" onChange={handleChange} value={formData.eventState}/>
+                    </div>
+                </div>
+                <div className="eventAddress">
+                    <label>Address</label>
+                    <br></br>
+                    <input type="text" name="address" onChange={handleChange} value={formData.address}/>
+                </div>
+                <div className="eventDate">
+                    <label>Date</label>
+                    <br></br>
+                    <input type="date" name="date" onChange={handleChange} value={formData.date}/>
+                </div>
+
+                <div className="eventTime">
+                    <div>
+                    <label>Start:</label>
+                    <input type="time" name="startTime" onChange={handleChange} value={formData.startTime}/>
+                    </div>
+                    <div>   
+                    <label>End</label>
+                    <input type="time" name="endTime" onChange={handleChange} value={formData.endTime}/>
+                    </div>
+                </div>
+
+                <div className="eventDesc">
+                    <label>Description</label>
+                    <br></br>
+                    <input type="text" name="description" onChange={handleChange} value={formData.description}/>
+                </div>
+                
                 <br></br>
-                <input type="text" name="address" onChange={handleChange} value={formData.address}/>
+                <button type="submit">Save Changes</button>
+                </form>
+                </div>
             </div>
-            <div>
-                <label>Description:</label>
-                <br></br>
-                <input type="text" name="description" onChange={handleChange} value={formData.description}/>
-            </div>
-            <div>
-                <label>Date:</label>
-                <br></br>
-                <input type="date" name="date" onChange={handleChange} value={formData.date}/>
-            </div>
-            <div>
-                <label>Start:</label>
-                <br></br>
-                <input type="time" name="startTime" onChange={handleChange} value={formData.startTime}/>
-            </div>
-            <div>
-                <label>End</label>
-                <br></br>
-                <input type="time" name="endTime" onChange={handleChange} value={formData.endTime}/>
-            </div>
-            <div>
-                <label>Max Capacity:</label>
-                <br></br>
-                <input type="text" name="capacity" onChange={handleChange} value={formData.capacity}/>
-            </div>
-            <br></br>
-            <button type="submit">Save Changes</button>
-        </form>
         </div>
     );
 };

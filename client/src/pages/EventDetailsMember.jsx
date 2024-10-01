@@ -61,9 +61,9 @@ const EventDetailMember = () => {
         }
     };
 
-    const handleEdit = async () => {
-        navigate(`/events/${id}/edit`);
-    };
+    // const handleEdit = async () => {
+    //     navigate(`/events/${id}/edit`);
+    // };
 
     const handleDelete = async () => {
         const confirmed = window.confirm("Are you sure you want to delete this event? All attendees will be removed.");
@@ -130,7 +130,7 @@ const EventDetailMember = () => {
                 <div className="leftDetail">
 
                     <div className="detailOptions">
-                        <Link onClick={handleEdit}>Edit</Link>
+                        <Link to={`/events/${id}/edit`}>Edit</Link>
                         <Link onClick={handleDelete}>Delete</Link>
                     </div>
 
