@@ -41,17 +41,17 @@ const LoginForm = () => {
         <div>
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Username</label>
+                {/* <label>Username</label> */}
                 <br></br>
-                <input type="text" name="userName" onChange={handleChange} required/>
+                <input type="text" name="userName" onChange={handleChange} placeholder="Username" required/>
             </div>
             <div>
-                <label>Password</label>
+                {/* <label>Password</label> */}
                 <br></br>
-                <input type="password" name="password" onChange={handleChange} required/>
+                <input type="password" name="password" onChange={handleChange} placeholder="Password" required/>
             </div>
         <br></br>
-        <button type="submit">Continue</button>
+        <button type="submit">Log in</button>
         </form>
         </div>
     );
