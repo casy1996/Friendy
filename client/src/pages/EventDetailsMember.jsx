@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import NavbarMember from "../components/NavbarMember";
 
 const EventDetailMember = () => {
@@ -120,35 +120,44 @@ const EventDetailMember = () => {
     };
 
     return (
-        <div>
+        <div className="detailPage">
             <NavbarMember/>
-            <div>
-                <button onClick={handleEdit}>Edit</button>
-            </div>
-            <div>
-                <button onClick={handleDelete}>Delete</button>
+
+            <div className="detailContainer">
+
+                <div className="leftDetail">
+
+                    <div className="detailOptions">
+                        <Link onClick={handleEdit}>Edit</Link>
+                        <Link onClick={handleDelete}>Delete</Link>
+                    </div>
+
+                    <h1>{event.event}</h1>
+                    <h3>hosted by {event.user.userName}</h3>
+                    <h5>Date: {event.date}</h5>
+                    <h5>Time: {event.startTime} - {event.endTime}</h5>
+                    <p>{event.description}</p>
+                    <button onClick={handleJoin}>Join</button>
+
+                </div>
+
+                <div className="detailDivider"></div>
+
+                <div className="rightDetail">
+                    <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`} />
+                    <h4>{event.address}</h4>
+
+                    <div className="rightOption">
+                        <input type="file" id="upload" onChange={handleFile} className="uploadDefault" />
+                        <label htmlFor="upload" className="uploadImage">Select Cover Photo</label>
+                        <button onClick={handleUpload}>Save</button>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div className="detailpage">
-
-            <div className="leftDetail">
-            <h1>{event.event}</h1>
-            <h2>hosted by {event.user.userName}</h2>
-            <p>Date: {event.date}</p>
-            <p>Time: {event.startTime} = {event.endTime}</p>
-            <p>{event.description}</p>
-            <button onClick={handleJoin}>Join</button>
-            </div>
-
-            <div className="rightDetail">
-                <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`}></img>
-                <br></br>
-                <input type="file" onChange={handleFile} />
-                <button onClick={handleUpload}>Change Event Picture</button>
-                <p>{event.address}</p>
-            </div>
-
-            </div>
+            
         </div>
     );
 };

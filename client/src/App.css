@@ -241,6 +241,8 @@
   flex-direction: column;
   align-items: center;
   padding-top: 120px;
+  margin-top: 60px;
+  margin-bottom: -200px;
   padding-bottom: 20px;
   min-height: 100vh;
 }
@@ -378,6 +380,153 @@
   box-shadow: 0 0 3px rgba(94, 94, 94, 0.324);
 }
 
+/* ========== EVENT DETAILS ========== */
+
+body {
+  padding-bottom: 50px;
+  /* background-color: rgba(163, 173, 155, 0.917); */
+}
+
+.detailPage {
+  margin-top: 150px;
+  margin-left: 200px;
+  margin-right: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(213, 213, 213, 0.831);
+  border: 1px solid rgba(115, 113, 113, 0.118);
+  box-shadow: 0 0 5px rgba(78, 78, 78, 0.847);
+  border-radius: 10px;
+  padding: 15px 20px 60px 20px;
+}
+
+.detailContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.leftDetail,
+.rightDetail {
+  flex: 1;
+  padding: 20px;
+}
+
+.leftDetail {
+  margin-right: 150px;
+}
+
+.leftDetail h5 {
+  text-align: left;
+  margin: -2px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.leftDetail h3 {
+  font-weight: 400;
+}
+
+.leftDetail h1 {
+  font-weight: 550;
+  margin-bottom: -10px;
+}
+
+.leftDetail p {
+  font-weight: 350;
+  font-size: 16px;
+  text-align: left;
+}
+
+.leftDetail button {
+  margin-top: 30px;
+  width: 200px;
+}
+
+.detailDivider {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 500px;
+  background-color: rgba(18, 18, 19, 0.275);
+  transform: translateX(-50%);
+  transform: translateY(-5%);
+}
+
+.rightDetail img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(94, 94, 94, 0.324);
+}
+
+.rightDetail h4 {
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.rightOption {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+.rightOption button {
+  margin-top: 10px;
+}
+
+.detailOptions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -45px;
+  margin-left: -30px;
+  padding-bottom: 20px;
+}
+
+.detailOptions a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: rgb(118, 118, 118);
+}
+
+
+.rightOption button {
+  width: 200px;
+}
+
+.uploadDefault {
+  display: none;
+}
+
+.uploadImage {
+  display: inline-block;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #eaeaea;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-top: 10px;
+  text-align: center;
+  width: 160px;
+}
+
+.uploadImage:hover {
+  border-color: #ee4e0ed9;
+}
+
+.uploadImage:focus {
+  outline: 4px auto #e79575;
+}
 
 /* .logo {
   height: 6em;

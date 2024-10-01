@@ -38,19 +38,21 @@ const EventDetailViewer = () => {
     };
 
     return (
-        <div>
+        <div className="detailPage">
             <NavbarViewer/>
 
-            <div className="detailPage">
+            <div className="detailContainer">
 
             <div className="leftDetail">
-            <h1>{event.event}</h1>
-            <h2>hosted by {event.user.userName}</h2>
-            <p>Date: {event.date}</p>
-            <p>Time: {event.startTime} = {event.endTime}</p>
-            <p>{event.description}</p>
-            <button onClick={handleJoin}>Join</button>
+                <h1>{event.event}</h1>
+                <h2>hosted by {event.user.userName}</h2>
+                <p>Date: {event.date}</p>
+                <p>Time: {event.startTime} = {event.endTime}</p>
+                <p>{event.description}</p>
+                <button onClick={handleJoin}>Join</button>
             </div>
+
+            <div className="detailDivider"></div>
 
             <div className="rightDetail">
                 <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`}></img>
