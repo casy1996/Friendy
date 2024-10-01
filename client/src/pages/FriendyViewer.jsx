@@ -28,22 +28,24 @@ const Viewer = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
 
     return (
-        <div>
+        <div className="eventGallery">
             <NavbarViewer/>
-            <div>
+
+            <div className="eventContainer">
                 {events.length === 0 ? ( <p> No events at this moment</p> ) : (
                     events.map(event => (
-                        <div key={event.id} className="event-card">
+                        <div key={event.id} className="eventCard">
                             <Link to={`/viewer/events/${event.id}`}>
                             <h2>{event.event}</h2>
-                            <h4>{event.eventCity},{event.eventState}</h4>
-                            <h4>hosted by {event.userName}</h4>
-                            <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`}></img>
+                            <h5>📍{event.eventCity}, {event.eventState}</h5>
+                            <p>hosted by {event.user.userName}</p>
+                            <img src={`${apiUrl}${event.eventPicture}`} alt={`${event.event}`} className="cardImage"/>
                             </Link>
                         </div>
                     ))
                 )}
             </div>
+
         </div>
     );
 };

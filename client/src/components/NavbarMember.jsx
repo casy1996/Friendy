@@ -21,27 +21,22 @@ const NavbarMember = () => {
     const userId = sessionStorage.getItem("userId");
 
   return (
-    <nav>
-        <div>
-        <Link to="/friendy-home">
-            <h1>friendy</h1>
-        </Link>
-        </div>
-        <div>
-        <Link to="/host-event">
-            <h1>host</h1>
-        </Link> 
-        <Link to="/my-events">
-            <h1>my events</h1>
-        </Link>
-        {userId && (
-            <Link to={`/my-profile/${userId}`}>
-                <h1>profile</h1>
-            </Link>
-        )}
-        <button onClick={handleLogout}>
-            <h1>logout</h1>
-        </button>
+    <nav className="navStandard">
+
+        <div className="navLanding">
+            <Link to="/friendy-home"><h1>friendy</h1></Link>
+
+            <div className="navOptions">
+                <Link to="/host-event">host</Link> 
+                <Link to="/my-events">my events</Link>
+                {userId && (
+                <Link to={`/my-profile/${userId}`}>profile</Link>
+                )}
+
+                <Link onClick={handleLogout}>logout</Link>
+
+            </div>
+
         </div>
     </nav>
   );
