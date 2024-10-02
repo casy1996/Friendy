@@ -52,7 +52,7 @@ public class SecurityConfig{
             .logoutSuccessUrl("/auth_friendy") 
             .invalidateHttpSession(true)
             .and()
-            .exceptionHandling()
+            .exceptionHandling();
 
         return http.build();
     }
