@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<!-- Version 3+, use jakarta imports not javax -->
-		<version>3.3.3</version>
+		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.friendy</groupId>
@@ -69,7 +69,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.7.4</version>
+			<version>42.2.20</version>
 			<scope>runtime</scope>
 		</dependency>
 		<!-- Enable Spring Session to tilize Redis database for session storage -->
