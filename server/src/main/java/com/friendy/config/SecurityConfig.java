@@ -53,10 +53,6 @@ public class SecurityConfig{
             .invalidateHttpSession(true)
             .and()
             .exceptionHandling()
-            .accessDeniedHandler((request, response, accessDeniedException) -> {
-                System.out.println("Access Denied: " + accessDeniedException.getMessage());
-                response.sendRedirect("/auth_friendy");
-            });
 
         return http.build();
     }
