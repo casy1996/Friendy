@@ -725,3 +725,20 @@
   flex-direction: column;
   padding-top: 60px;
 }
+
+.editProfileForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.editProfileForm input,
+.editProfileForm label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.updateProfile button {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}

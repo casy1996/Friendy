@@ -97,9 +97,11 @@ const EditProfile = () => {
 
     return (
         <div>
+            <div className="accountPage">
             <NavbarMember/>
 
-            <h1>Edit Profile</h1>
+            <div className="accountBorder editProfileForm">
+            <h1 >Edit Profile</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     First Name:
@@ -163,13 +165,15 @@ const EditProfile = () => {
                         onChange={handleChange}
                     />
                 </label>
-                <button type="submit">Update Profile</button>
+                <div className="updateProfile"><button type="submit">Update Profile</button></div>
             </form>
 
             <div>
                 <button onClick={handleDelete}>Deactivate Account</button>
             </div>
 
+            </div>
+            </div>
         </div>
     );
 };
