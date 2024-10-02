@@ -8,7 +8,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 //Add Redis Session Annotation
 @EnableRedisHttpSession
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 public class FriendyApplication {
 
 	public static void main(String[] args) {
