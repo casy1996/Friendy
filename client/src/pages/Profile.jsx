@@ -1,7 +1,3 @@
-// page to display user information 
-// modify user model to accept a profile picture
-// add a default friendy profile picture if user doesnt provide one
-
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -84,26 +80,34 @@ const UserDetails = () => {
 
             <div className="profilePage">
                 <br></br>
-                <br></br>
-                <div>
-                <img src={`${apiUrl}${user.profilePicture}`} alt={`${user.userName}`}></img>
-                <br></br>
-                <input type="file" onChange={handleFile} />
-                <button onClick={handleUpload}>Change Profile Picture</button>
+
+                <div className="profileHeader">
+                    <div className="profileOptions">
+
+                        <img src={`${apiUrl}${user.profilePicture}`} alt={`${user.userName}`} className="profileImage"/>
+                        <br></br>
+
+                        <div className="editProfileButton"><button onClick={handleEdit}>Edit Profile</button></div>
+                        <input type="file" id="uploadProfile" onChange={handleFile} className="uploadProfileDefault"/>
+                        <label htmlFor="uploadProfile" className="uploadProfileImage">Upload Picture</label>
+                        <button onClick={handleUpload}>Change Profile Picture</button>
+
+                    </div>
+
+                    <div className="profileUser">
+                        <h1>{user.userName}</h1>
+                        <h2>{user.firstName} {user.lastName}</h2>
+                        <br/>
+                        <p>Home: {user.city}, {user.state}</p>
+                        <p>Contact: {user.email}</p>
+                    </div>
+
                 </div>
 
-                <div>
-                <h1>{user.userName}</h1>
-                <h2>{user.firstName} {user.lastName}</h2>
-                <br />
-                <p>Home: {user.city}, {user.state}</p>
-                <p>Email: {user.email}</p>
-                </div>
 
             </div>
 
             <div>
-                <button onClick={handleEdit}>Edit Profile</button>
             </div>
 
         </div>

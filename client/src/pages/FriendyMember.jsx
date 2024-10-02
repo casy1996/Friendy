@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavbarMember from "../components/NavbarMember";
-// import "../App.css";
 
 const Member = () => {
     const [events, setEvents] = useState([]);
