@@ -35,9 +35,9 @@ Initial wireframes of the app.
 
 ### Current
 Below is the current iteration of the apps design
-![Screenshot 1](image/friendy_ss1.png)
-![Screenshot 2](image/friendy_ss2.png)
-![Screenshot 3](image/friendy_ss3.png)
+![Screenshot 1](images/friendy_ss1.png)
+![Screenshot 2](images/friendy_ss2.png)
+![Screenshot 3](images/friendy_ss3.png)
 
 ## <a name="nextsteps"></a>Future Features
 Incorporate search function to filter through all events by name, location, event creator. <br>
