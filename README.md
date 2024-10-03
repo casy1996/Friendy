@@ -21,7 +21,7 @@ Friendy is an app all about creating events that bring people together based on 
 * Redis
 
 ## Features
-Users can create a secure account wtih encrypted password. <br>
+Users can create a secure account with encrypted password. <br>
 Users can login and out with changes made on the profile persist between sessions. <br>
 Users can perform full CRUD functionality with events created by said user. <br>
 Users can join events and view all joined and created events on a 'my events'.<br>
