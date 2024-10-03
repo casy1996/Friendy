@@ -14,7 +14,7 @@ const AboutUs = () => {
                     <div><h1>About Friendy</h1></div>
 
                     <div>
-                    <p>In today's fast-paced world, it can be tough to find those third spaces that encourage social interaction and genuine connections. Friendy is all creating events that bring people together based on shared interests. Whether you're looking to recruit members for a book club, host a chill gathering in the park, or plan a fun dinner party, Friendy is your go-to solution for making friends and finding fun things to do on the spot. We believe in the power of the community, and our mission is to help you find your tribe and build lasting relationships </p>
+                    <p>In today's fast-paced world, it can be tough to find those third spaces that encourage social interaction and genuine connections. Friendy is all about creating events that bring people together based on shared interests. Whether you're looking to recruit members for a book club, host a chill gathering in the park, or plan a fun dinner party, Friendy is your go-to solution for making friends and finding fun things to do on the spot. We believe in the power of the community, and our mission is to help you find your tribe and build lasting relationships </p>
                     </div>
 
                     <div><h1>Meet the owner</h1></div>
