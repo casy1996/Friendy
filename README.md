@@ -1,7 +1,7 @@
 # Friendy
 
 ## Description
-Friendy is an app all about creating events that bring people together based on shared interest. Through hosting events we create third spaces for the community to find new genuine relationships and bre
+Friendy is an app all about creating events that bring people together based on shared interest.
 
 ## Table of Contents
 * [Technologies Used](#technologiesused)
